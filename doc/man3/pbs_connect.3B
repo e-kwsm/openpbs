@@ -104,7 +104,7 @@ before calling
 .B pbs_connect(), 
 and link against the ws2_32.lib library.
 
-.SH RETURN VAlUE
+.SH RETURN VALUE
 On success, the routine returns a connection handle which is a
 non-negative integer.
 
