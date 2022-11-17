@@ -1,4 +1,4 @@
-Instant-CI is a developer tool which aims at providing continous integration to the developers locally on their development systems.
+Instant-CI is a developer tool which aims at providing continuous integration to the developers locally on their development systems.
 Users can build, install PBS and run PTL tests with a single command. For this, the user need not worry about any underlying dependencies.
 It also supports build and test history in the form of logs.
 

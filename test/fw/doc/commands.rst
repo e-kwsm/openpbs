@@ -216,7 +216,7 @@ To output to a PostgreSQL database::
                   --db-name=<name or path of database>
                   --db-type=psql
 
-Note that the psycopg2 module is needed to write out ot the PostgreSQL database.
+Note that the psycopg2 module is needed to write out to the PostgreSQL database.
 The cred file should specify the following::
 
   user=<db username> password=<user's password> dbname=<databasename> port=<val>
@@ -474,7 +474,7 @@ pbs_config is useful in the following cases, use:
 
 .. option:: --switch-version
 
-    swith to a version of PBS installed on the system. This
+    switch to a version of PBS installed on the system. This
     only supports modifying the PBS installed on a system that matches
     PBS_CONF_FILE.
 

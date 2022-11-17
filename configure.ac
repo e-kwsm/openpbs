@@ -95,7 +95,7 @@ AC_CHECK_LIB([c], [crypt],
   AC_CHECK_LIB(crypt, crypt)
 )
 AC_CHECK_LIB([c], [posix_openpt],
-  AC_DEFINE([HAVE_POSIX_OPENPT], [], [Defined whe posix_openpt is available])
+  AC_DEFINE([HAVE_POSIX_OPENPT], [], [Defined when posix_openpt is available])
 )
 AC_CHECK_LIB(dl, dlopen)
 AC_CHECK_LIB([kvm], [kvm_open])

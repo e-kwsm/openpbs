@@ -458,7 +458,7 @@ with other reservations or jobs.  One of
 
 .IP grouping 3
 Whether the chunks from this reservation should be placed on vnodes
-that all have the smae value for a resource.  Can have only one
+that all have the same value for a resource.  Can have only one
 instance of
 .I group=resource
 .LP

@@ -7,7 +7,7 @@ OpenPBS can easily send a huge amount of emails to one user/email. pbs-mailer is
 * RPM package: run  'release-rpm.sh'
 * DEB package: run  'release-deb.sh'
 
-### Manual instalation
+### Manual installation
 
 Move pbs_mail.json, pbs_mail_saver, and pbs_mail_sender into an appropriate location.
 

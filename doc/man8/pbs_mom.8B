@@ -644,7 +644,7 @@ Default: 0.12 seconds
 Cray only.  Specifies the amount of time that PBS tries to release an
 ALPS reservation before giving up.  After this amount of time has
 passed, PBS stops trying to release the ALPS reservation, the job
-exits, and the job's rsources are released.  PBS sends a HUP to the
+exits, and the job's resources are released.  PBS sends a HUP to the
 MoM so that she re-reads the ALPS inventory to get the current
 available ALPS resources.
 .br
@@ -862,7 +862,7 @@ directive after the directory name:
 .I $jobdir_root <directory name> shared
 .br
 Otherwise sister MoMs can prematurely delete files and directories
-when nodes are released.  This is because when a job’s sandbox
+when nodes are released.  This is because when a jobs sandbox
 attribute is set to PRIVATE and $jobdir_root is set to a shared
 directory, PBS can use a shared location for job files.  When sister
 nodes are released, those sister MoMs would normally clean up their
@@ -1071,8 +1071,8 @@ $prologalarm 30
 .IP "$reject_root_scripts <True | False>" 5
 When set to 
 .I True,
-MoM won't aquire any new hook scripts, and MoM won't run job scripts that would execute
-as root or Admin. However, MoM will run previously-aquired hooks that run as root.
+MoM won't acquire any new hook scripts, and MoM won't run job scripts that would execute
+as root or Admin. However, MoM will run previously-acquired hooks that run as root.
 .br 
 Format: Boolean
 .br
@@ -1226,8 +1226,8 @@ is used to resume jobs instead of SIGCONT.
 .IP "$tmpdir <directory>" 5
 Location where each job's scratch directory will be created.
 
-PBS creats a temporary directory for use by the job, not by PBS.
-PBS creates the directory before the the job is run and removes 
+PBS creates a temporary directory for use by the job, not by PBS.
+PBS creates the directory before the job is run and removes 
 the directory and its contents when the job is finished.  It is 
 scratch space for use by the job.  Permission must be 1777 on
 Linux, writable by 

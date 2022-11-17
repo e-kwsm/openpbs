@@ -1026,7 +1026,7 @@ stage-in fails and PBS moves job start time out
 30 minutes to allow user to fix problem.
 .br
 Python type: PBS job state constant
-.I pbs.JOB_STATE_WAIITING
+.I pbs.JOB_STATE_WAITING
 .IP X 3
 .I Expired.
 Subjobs only.  Subjob is finished (expired.)
@@ -1242,7 +1242,7 @@ If the path name is not specified, the default filename is
 .RE
 
 .IP "pcap_accelerator" 8
-Power attribute.  Power cap for an accleerator.  Corresponds to Cray 
+Power attribute.  Power cap for an accelerator.  Corresponds to Cray 
 .I capmc set_power_cap --accel
 setting.  See 
 .I capmc
