@@ -133,7 +133,7 @@ The
 command can be used on jobs and job arrays, but not on subjobs or ranges 
 of subjobs.  The 
 .B qrls 
-comand accepts one or more 
+command accepts one or more 
 .I job IDs
 in the form:
 .RS 4

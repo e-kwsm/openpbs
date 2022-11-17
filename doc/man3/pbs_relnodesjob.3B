@@ -90,7 +90,7 @@ job that are not on the primary execution host are to be released.
 .IP extend 8
 Character string for extensions to command.  Not currently used.
 
-.SH RETURN VALLUE
+.SH RETURN VALUE
 The routine returns 0 (zero) on success.
 
 If an error occurred, the routine returns a non-zero exit value, and

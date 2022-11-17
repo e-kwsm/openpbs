@@ -98,7 +98,7 @@ provided by the PTL framework to capture root-owned information via
 All other information is collected as a normal user.  If
 you need to run 
 .B pbs_snapshot 
-as a non-prvileged user, and without
+as a non-privileged user, and without
 using the PTL 
 .I --with-sudo 
 infrastructure, you must be root if you want

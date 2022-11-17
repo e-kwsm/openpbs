@@ -56,7 +56,7 @@ Under UNIX/Linux, root privilege is required in order to operate on
 hooks.  Under Windows, this must be done from the installation
 account.  For domained environments, the installation account must be
 a lo cal account that is a member of the local Administrators group on
-the local computer.  For standalone environments, the ins tallation
+the local computer.  For standalone environments, the installation
 account must be a local account that is a member of the local
 Administrators group on the local computer.
 

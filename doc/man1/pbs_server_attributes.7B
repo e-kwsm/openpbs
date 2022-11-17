@@ -1755,7 +1755,7 @@ Default:
 .I 1024
 
 .IP rpp_max_pkt_check 8
-Maxiumum number of TPP messages processed by the main server thread per iteration.
+Maximum number of TPP messages processed by the main server thread per iteration.
 .br
 Readable by all; settable by Manager.
 .br

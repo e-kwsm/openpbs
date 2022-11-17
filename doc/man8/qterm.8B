@@ -91,7 +91,7 @@ Without the
 .I -f 
 option, 
 .B qterm 
-shuts down the the primary server and makes the secondary server active.  
+shuts down the primary server and makes the secondary server active.  
 .br
 The 
 .I -f

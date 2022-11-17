@@ -942,7 +942,7 @@ delimiter using the
 .I -D 
 argument to the 
 .I -F dsv 
-option.  For example, to use a comma as the delimeter:
+option.  For example, to use a comma as the delimiter:
 .RS 13
 .B qstat -f -F dsv -D,
 .RE

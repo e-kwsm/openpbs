@@ -195,7 +195,7 @@ The
 command accepts one or more space-separated
 .I job ID
 operands.  These operands can be job identifiers, job array
-identifiers, subjob dentifiers, or subjob range identifiers.
+identifiers, subjob identifiers, or subjob range identifiers.
 
 Job IDs have the form:
 .br

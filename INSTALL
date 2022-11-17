@@ -247,7 +247,7 @@ Note 2: It is advisable to create a simple shell script that calls
   subsequent invocations. If you have already run configure you can
   regenerate all of the Makefiles by running "./config.status".
   The first few lines of config.status will reveal the options that
-  were specified when configure was run. If you set envirnment
+  were specified when configure was run. If you set environment
   variables such as CFLAGS it is best to do so as an argument to
   configure (e.g. ./configure CFLAGS="-O0 -g" --prefix=/opt/pbs).
   This will ensure consistency when config.status regenerates the

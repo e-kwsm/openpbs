@@ -33,7 +33,7 @@ and consider adding it to the library or utility if it is a generic interface to
 PBS.
 
 PTL strongly follows PEP8 Python coding style. so please style your code to follow
-PEP8 Python codeing style. You can find PEP8 at https://www.python.org/dev/peps/pep-0008/
+PEP8 Python coding style. You can find PEP8 at https://www.python.org/dev/peps/pep-0008/
 
 Some info about PBSTestSuite
 ----------------------------
@@ -84,7 +84,7 @@ PBSTestSuite offers the following:
     - mgr-users: colon-separated list of manager users.
     - root-users: colon-separated list of root users.
     - build-users: colon-separated list of build users.
-    - daemon-users: colon-seperating list of daemon users.
+    - daemon-users: colon-separating list of daemon users.
 
   - Check required users are available or not
   - Creates servers, moms, schedulers and comms object
@@ -136,7 +136,7 @@ See ptl/tests/pbs_smoketest.py for some basic examples how to write test suite.
 
 Whenever possible consider making the test class inherit from PBSTestSuite, it
 is a generic setup and teardown class that delete all jobs and reservations,
-reverts PBS deamons configuration to defaults and ensures that there
+reverts PBS daemons configuration to defaults and ensures that there
 is at least one cpu to schedule work on.
 
 How to mark a test as skipped

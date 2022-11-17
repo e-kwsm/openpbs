@@ -765,7 +765,7 @@ PBS sets
 .I walltime
 for a shrink-to-fit job.  If 
 .I max_walltime 
-is specifed, 
+is specified, 
 .I min_walltime
 must also be specified.  
 Cannot be used for 

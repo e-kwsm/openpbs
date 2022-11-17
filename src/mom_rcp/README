@@ -7,7 +7,7 @@ for the rcp(1) command.  This source is from the bsd4.4-Lite
 distribution.  It is copyrighted by UCB as noted in the source
 files.  This code has been slightly modified in order to have
 in compile on systems other than bsd4.4;  note their liberal
-use of functions suchs as vwarnx() and snprintf() not found in
+use of functions such as vwarnx() and snprintf() not found in
 POSIX.   The copyright, reproduced below, clearly grants the right
 to modify and redistribute the source.
 
