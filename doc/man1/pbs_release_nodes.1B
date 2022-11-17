@@ -72,8 +72,8 @@ assigned to a running job via the
 .I -a 
 option.
 
-PBS can keep the numbe of sister hosts you specify, or PBS can release
-all sister vnodes except for the ones you specify vi a a select
+PBS can keep the number of sister hosts you specify, or PBS can release
+all sister vnodes except for the ones you specify via a select
 statement.  
 
 Can be used on jobs and subjobs, but not on job arrays or ranges of
