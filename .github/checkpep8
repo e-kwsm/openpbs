@@ -40,9 +40,9 @@
 checkdir="$(readlink -f $(dirname $0))"
 errors=0
 
-which pep8 1>/dev/null 2>/dev/null
+which pycodestyle 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]; then
-    echo "Could not find pep8 command" 1>&2
+    echo "Could not find pycodestyle command" 1>&2
     exit 1
 fi
 
@@ -73,7 +73,7 @@ is_python_file() {
 }
 
 check_pep8() {
-    pep8 --show-source ${1} >out_check_pep8 2>&1
+    pycodestyle --show-source ${1} >out_check_pep8 2>&1
     return $?
 }
 

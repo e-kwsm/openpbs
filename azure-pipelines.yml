@@ -9,7 +9,7 @@ jobs:
   - job: runcheck
     steps:
       - bash: |
-               sudo apt-get install -y pep8
+               sudo apt-get install -y pycodestyle
                sudo apt-get install -y python3-pip
                sudo pip3 install --upgrade pip
                sudo pip3 install clang-format
