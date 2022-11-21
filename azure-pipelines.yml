@@ -30,18 +30,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-pip
           sudo pip3 install --upgrade pip
-          sudo pip3 install pycodestyle pep8 flake8 clang-format
-          
-          # Create pep8 symlink if it doesn't exist (for compatibility)
-          if ! command -v pep8 &> /dev/null; then
-            sudo ln -sf $(which pycodestyle) /usr/local/bin/pep8
-          fi
+          sudo pip3 install pycodestyle pycodestyle flake8 clang-format
           
           # Verify installations
           echo "Checking installed tools:"
           python3 --version
           pip3 --version
-          pep8 --version || pycodestyle --version
+          pycodestyle --version
           clang-format --version
           
           # Check if runchecks script exists
@@ -52,7 +47,7 @@ jobs:
             echo "Warning: .github/runchecks script not found"
             # Run basic checks if script is missing
             echo "Running basic Python style checks..."
-            find . -name "*.py" -exec pep8 {} \; || true
+            find . -name "*.py" -exec pycodestyle {} \; || true
           fi
         displayName: 'Run code quality checks'
 
