@@ -198,14 +198,14 @@ For example, we have a Python job script that includes PBS directives:
 .RS 3
 .B cat myjob.py
 .nf
-#!/usr/bin/python
+#!/usr/bin/python3
 #PBS -l select=1:ncpus=3:mem=1gb
 #PBS -N HelloJob
-print "Hello"
+print("Hello")
 .fi
 .RE
 
-So long as the first line of the script is the "#!/usr/bin/python" line
+So long as the first line of the script is the "#!/usr/bin/python3" line
 or similar, you don't need to do anything special to run a python script.
 .RS 3
 .I qsub <script name>
