@@ -416,7 +416,7 @@ vendor_init()
 	sgi_compute_node="/etc/sgi-compute-node-release"
 	sgi_service_node="/etc/sgi-service-node-release"
 
-	if [ -f $sgi_release -o -f $sgi_compute_node -o -f $sgi_service_node ]
+	if [ -f $sgi_release ] || [ -f $sgi_compute_node ] || [ -f $sgi_service_node ]
 	then
 		sgiinit
 		supported_platform=1
@@ -518,7 +518,7 @@ sgicheckppversion()
 	if [ -r $sgi_release ]
 	then
 		read sgi propack propackvers rest < $sgi_release
-		if [ "$sgi" != "SGI" -o "$propack" != "ProPack" ]
+		if [ "$sgi" != "SGI" ] || [ "$propack" != "ProPack" ]
 		then
 			logerr "$sgi_release:  unexpected contents"
 			exit 1
@@ -551,7 +551,7 @@ sgiconfig()
 	fi
 
 	PBS_LIB_PATH=${PBS_EXEC}/lib
-	if [ ! -d ${PBS_LIB_PATH} -a -d ${PBS_EXEC}/lib64 ] ; then
+	if [ ! -d ${PBS_LIB_PATH} ] && [ -d ${PBS_EXEC}/lib64 ] ; then
 		PBS_LIB_PATH=${PBS_EXEC}/lib64
 	fi
 
@@ -635,7 +635,7 @@ do
 			in_rankdef=0
 			shift
 			evalsimpleargs ${1+"$@"}
-			while [ $# -gt 0 -a "$1" != ":" ]
+			while [ $# -gt 0 ] && [ "$1" != ":" ]
 			do
 				shift
 			done
@@ -670,7 +670,7 @@ do
 	esac
 done
 
-if [ $in_rankdef -eq 1 -a -z "$prog" ]
+if [ $in_rankdef -eq 1 ] && [ -z "$prog" ]
 then
 	logerr "rank $ranknum has no executable"
 	exit 1
