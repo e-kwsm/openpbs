@@ -492,7 +492,7 @@ pbs_install_db () {
 	fi
 
 	# Copy pgsql directory to PBS_HOME (as pgsql.forupgrade) for it's future upgrade
-	[ ! -d "${PBS_HOME}/pgsql.forupgrade" -a -d "${PBS_EXEC}/pgsql" -a -d "${PBS_HOME}" ] && cp -pr --no-preserve=timestamps "${PBS_EXEC}/pgsql" "${PBS_HOME}/pgsql.forupgrade" 2>&1
+	[ ! -d "${PBS_HOME}/pgsql.forupgrade" ] && [ -d "${PBS_EXEC}/pgsql" ] && [ -d "${PBS_HOME}" ] && cp -pr --no-preserve=timestamps "${PBS_EXEC}/pgsql" "${PBS_HOME}/pgsql.forupgrade" 2>&1
 
 	if [ $upgrade -eq 1 ]; then
 		cleanup_on_finish
