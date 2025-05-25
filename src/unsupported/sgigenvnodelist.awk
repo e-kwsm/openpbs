@@ -118,7 +118,7 @@ BEGIN {
 	#	in the "cpuset" file system
 	findcmd = "find /dev/cpuset -name cpus -o -name cpuset.cpus \
 		-o -name mems -o -name cpuset.mems | \
-		egrep -v -e '/dev/cpuset/cpus$' -e '/dev/cpuset/cpuset.cpus$' \
+		grep -E -v -e '/dev/cpuset/cpus$' -e '/dev/cpuset/cpuset.cpus$' \
 		-e '/dev/cpuset/mems$' -e '/dev/cpuset/cpuset.mems$' \
 		-e '/PBSPro/'";
 
