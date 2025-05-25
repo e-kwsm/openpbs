@@ -189,11 +189,7 @@ DownRM(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[
 }
 
 int
-ConfigRM(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+ConfigRM(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	int fd, ret;
 	char *cmd, *filename;
@@ -274,11 +270,7 @@ AllREQ(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 }
 
 int
-GetREQ(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+GetREQ(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	int fd;
 	char *ret, *getreq();
@@ -320,11 +312,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-FlushREQ(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+FlushREQ(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	if (argc != 1) {
 		sprintf(log_buffer, badparm, (char *) argv[0]);
@@ -339,11 +327,7 @@ char *argv[];
 }
 
 int
-ActiveREQ(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+ActiveREQ(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	int ret;
 
@@ -369,11 +353,7 @@ char *argv[];
 }
 
 int
-FullResp(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+FullResp(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	int flag;
 
@@ -392,11 +372,7 @@ char *argv[];
 }
 
 int
-PBS_Connect(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_Connect(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *server = NULL;
 
@@ -427,11 +403,7 @@ char *argv[];
 }
 
 int
-PBS_Disconnect(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_Disconnect(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	if (argc != 1) {
 		sprintf(log_buffer, badparm, argv[0]);
@@ -449,9 +421,7 @@ char *argv[];
 }
 
 Tcl_Obj *
-attrlist(interp, ap)
-Tcl_Interp *interp;
-struct attrl *ap;
+attrlist(Tcl_Interp *interp, struct attrl *ap)
 {
 	Tcl_Obj *ret;
 
@@ -477,9 +447,7 @@ struct attrl *ap;
 }
 
 void
-	batresult(interp, bs)
-		Tcl_Interp *interp;
-struct batch_status *bs;
+	batresult(Tcl_Interp *interp, struct batch_status *bs)
 {
 	Tcl_Obj *batchl;
 	struct batch_status *bp;
