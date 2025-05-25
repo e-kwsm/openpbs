@@ -607,11 +607,7 @@ PBS_SelStat(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 }
 
 int
-PBS_StatQue(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_StatQue(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	struct batch_status *bs;
@@ -649,11 +645,7 @@ char *argv[];
 }
 
 int
-PBS_StatNode(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+PBS_StatNode(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	char *msg, *cmd;
 	char *node = NULL;
@@ -694,11 +686,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-PBS_AsyRunJob(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_AsyRunJob(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	char *location = NULL;
@@ -728,11 +716,7 @@ char *argv[];
 }
 
 int
-PBS_RunJob(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_RunJob(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	char *location = NULL;
@@ -762,11 +746,7 @@ char *argv[];
 }
 
 int
-PBS_ReRun(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_ReRun(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	char *extend = "0";
@@ -795,11 +775,7 @@ char *argv[];
 }
 
 int
-PBS_MoveJob(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_MoveJob(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	char *location = NULL;
@@ -839,11 +815,7 @@ char *argv[];
 }
 
 int
-PBS_DelJob(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_DelJob(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	char *message = NULL;
@@ -873,11 +845,7 @@ char *argv[];
 }
 
 int
-PBS_HoldJob(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_HoldJob(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 
