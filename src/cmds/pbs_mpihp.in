@@ -53,7 +53,7 @@ is_comment_line ()
 {
    line=$*
 
-   if [ `echo "$1" | grep -c "^#"` -ne 0 ] ; then
+   if [ `echo "$1" | grep -E -c "^#"` -ne 0 ] ; then
       echo 0
       return
    fi
@@ -216,7 +216,7 @@ get_appfile_args ()
          shift
          args="$args $1"
 
-#      NOTE: we're using egrep for
+#      NOTE: we're using grep -E for
 #            regular expression matching
 #            as expr MATCH doesn't seemed
 #            to work under HP
@@ -315,7 +315,7 @@ get_global_args ()
          [ "XX$1" = "XX-ck" ] ; then
          global_args="$global_args $1"
 
-#      NOTE: we're using egrep for
+#      NOTE: we're using grep -E for
 #            regular expression matching
 #            as expr MATCH doesn't seemed
 #            to work under HP
@@ -397,7 +397,7 @@ get_appfile ()
          shift
          continue
 
-#      NOTE: we're using egrep for
+#      NOTE: we're using grep -E for
 #            regular expression matching
 #            as expr MATCH doesn't seemed
 #            to work under HP
@@ -473,7 +473,7 @@ is_prun_specified ()
          shift
          continue
 
-#      NOTE: we're using egrep for
+#      NOTE: we're using grep -E for
 #            regular expression matching
 #            as expr MATCH doesn't seemed
 #            to work under HP
@@ -518,7 +518,7 @@ get_appfile_args_nonp ()
          shift
          args="$args $1"
 
-#      NOTE: we're using egrep for
+#      NOTE: we're using grep -E for
 #            regular expression matching
 #            as expr MATCH doesn't seemed
 #            to work under HP
