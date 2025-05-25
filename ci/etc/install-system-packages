@@ -70,7 +70,7 @@ chmod g+x,o+x /home/*
 
 . /etc/os-release
 
-if [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x8" ]; then
+if [ "x${ID}" == "xcentos" ] && [ "x${VERSION_ID}" == "x8" ]; then
   sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
   sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*
   dnf -y clean all
@@ -93,7 +93,7 @@ if [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x8" ]; then
   dnf -y clean all
   rpmdev-setuptree
   __systemd_paths='/etc/systemd/system /usr/lib/systemd/system'
-elif [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x7" ]; then
+elif [ "x${ID}" == "xcentos" ] && [ "x${VERSION_ID}" == "x7" ]; then
   yum -y clean all
   rpm --import https://package.perforce.com/perforce.pubkey &&
     {
@@ -120,7 +120,7 @@ elif [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x7" ]; then
   yum -y clean all
   rpmdev-setuptree
   __systemd_paths='/etc/systemd/system /usr/lib/systemd/system'
-elif [ "x${ID}" == "xopensuse" -o "x${ID}" == "xopensuse-leap" ]; then
+elif [ "x${ID}" == "xopensuse" ] || [ "x${ID}" == "xopensuse-leap" ]; then
   __on="$(grep -oP '(?<=^NAME=").*(?=")' /etc/os-release)"
   __ov="$(grep -oP '(?<=^VERSION=").*(?=")' /etc/os-release)"
   zypper -n addrepo -ceKfG "https://download.opensuse.org/repositories/devel:tools/${__on// /_}_${__ov// /_}/devel:tools.repo"
@@ -161,7 +161,7 @@ elif [ "x${ID}" == "xubuntu" ]; then
     systemd systemd-sysv sysvinit-utils libcap2-bin rsyslog libpam-dev \
     openssh-server openssh-client valgrind llvm gdb rsync wget ccache \
     python3 python3-pip cpanminus
-  if [ "x${ID}" == "xubuntu" -a "x${VERSION_ID}" == "x16.04" ]; then
+  if [ "x${ID}" == "xubuntu" ] && [ "x${VERSION_ID}" == "x16.04" ]; then
     wget -qO - https://package.perforce.com/perforce.pubkey | apt-key add - &&
       echo 'deb http://package.perforce.com/apt/ubuntu/ xenial release' >/etc/apt/sources.list.d/perforce.list
   else
@@ -201,7 +201,7 @@ systemctl set-default multi-user.target
 
 systemctl enable sshd || systemctl enable ssh
 systemctl enable sendmail
-if [ "x${ID}" != "xubuntu" -a "x${VERSION_ID}" != "x16.04" ]; then
+if [ "x${ID}" != "xubuntu" ] && [ "x${VERSION_ID}" != "x16.04" ]; then
   systemctl disable sm-client
   systemctl mask sm-client
 fi
