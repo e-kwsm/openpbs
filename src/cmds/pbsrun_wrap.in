@@ -115,7 +115,7 @@ actual_mpirun_dir=`dirname $actual_mpirun`
 # Save original mpirun script
 res=`exec_cmd mv $actual_mpirun ${actual_mpirun}.actual`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -E -c FAILED` -ne 0 ] ; then
 	exit 1
 fi
 
@@ -126,25 +126,25 @@ else
 	res=`exec_cmd cp ${PBS_EXEC_BIN}/pbsrun ${PBS_EXEC_BIN}/${pbs_mpirun}`
 fi
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -E -c FAILED` -ne 0 ] ; then
 	exit 1
 fi
 
 res=`exec_cmd chmod 755 ${PBS_EXEC_BIN}/${pbs_mpirun}`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -E -c FAILED` -ne 0 ] ; then
 	exit 1
 fi
 
 res=`exec_cmd ln -s ${PBS_EXEC_BIN}/$pbs_mpirun $actual_mpirun`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -E -c FAILED` -ne 0 ] ; then
 	exit 1
 fi
 
 res=`exec_cmd ln -s ${actual_mpirun}.actual ${PBS_LIB_PATH}/MPI/${pbs_mpirun}.link`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -E -c FAILED` -ne 0 ] ; then
 	exit 1
 fi
 
@@ -157,6 +157,6 @@ fi
 
 res=`exec_cmd chmod 644  ${PBS_LIB_PATH}/MPI/${pbs_mpirun}.init`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -E -c FAILED` -ne 0 ] ; then
 	exit 1
 fi
