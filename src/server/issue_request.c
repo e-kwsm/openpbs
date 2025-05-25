@@ -394,7 +394,7 @@ add_mom_deferred_list(int stream, mominfo_t *minfo, void (*func)(), char *msgid,
  *
  */
 int
-issue_Drequest(int conn, struct batch_request *request, void (*func)(), struct work_task **ppwt, int prot)
+issue_Drequest(int conn, struct batch_request *request, void (*func)(struct work_task *), struct work_task **ppwt, int prot)
 {
 	struct attropl *patrl;
 	struct work_task *ptask;
