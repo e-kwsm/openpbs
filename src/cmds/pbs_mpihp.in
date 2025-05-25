@@ -53,7 +53,7 @@ is_comment_line ()
 {
    line=$*
 
-   if [ `echo "$1" | egrep -c "^#"` -ne 0 ] ; then
+   if [ `echo "$1" | grep -c "^#"` -ne 0 ] ; then
       echo 0
       return
    fi
@@ -225,12 +225,12 @@ get_appfile_args ()
            [ "XX$1" = "XX-l" ]  ||
            [ "XX$1" = "XX-i" ] ; then
 	 shift
-      elif [ `echo "$1" | egrep -c "^\-aff=.+"` -ne 0 ] ; then
+      elif [ `echo "$1" | grep -E -c "^\-aff=.+"` -ne 0 ] ; then
          shift
          continue
       elif [ "XX$1" = "XX--" ] ; then
          break
-      elif [ `echo "$1" | egrep -c "^\-.+"` -ne 0 ] ; then
+      elif [ `echo "$1" | grep -E -c "^\-.+"` -ne 0 ] ; then
          shift
          continue
       else
@@ -308,10 +308,10 @@ get_global_args ()
          [ "XX$1" = "XX-srq" ] ||
          [ "XX$1" = "XX-ibv" ] ||
          [ "XX$1" = "XX-IBV" ] ||
-         [ `echo "$1" | egrep -c "^\-[djpv]+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-stdio=.+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-aff=.+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-universe_size=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-[djpv]+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-stdio=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-aff=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-universe_size=.+"` -ne 0 ] ||
          [ "XX$1" = "XX-ck" ] ; then
          global_args="$global_args $1"
 
@@ -389,10 +389,10 @@ get_appfile ()
          [ "XX$1" = "XX-srq" ] ||
          [ "XX$1" = "XX-ibv" ] ||
          [ "XX$1" = "XX-IBV" ] ||
-         [ `echo "$1" | egrep -c "^\-[djpv]+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-stdio=.+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-aff=.+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-universe_size=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-[djpv]+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-stdio=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-aff=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-universe_size=.+"` -ne 0 ] ||
          [ "XX$1" = "XX-ck" ] ; then
          shift
          continue
@@ -465,10 +465,10 @@ is_prun_specified ()
          [ "XX$1" = "XX-srq" ] ||
          [ "XX$1" = "XX-ibv" ] ||
          [ "XX$1" = "XX-IBV" ] ||
-         [ `echo "$1" | egrep -c "^\-[djpv]+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-stdio=.+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-aff=.+"` -ne 0 ] ||
-         [ `echo "$1" | egrep -c "^\-universe_size=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-[djpv]+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-stdio=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-aff=.+"` -ne 0 ] ||
+         [ `echo "$1" | grep -E -c "^\-universe_size=.+"` -ne 0 ] ||
          [ "XX$1" = "XX-ck" ] ; then
          shift
          continue
@@ -531,7 +531,7 @@ get_appfile_args_nonp ()
 
       elif [ "XX$1" = "XX--" ] ; then
          break
-      elif [ `echo "$1" | egrep -c "^\-.+"` -ne 0 ] ; then
+      elif [ `echo "$1" | grep -E -c "^\-.+"` -ne 0 ] ; then
          shift
          continue
       else
@@ -689,7 +689,7 @@ if [ -h ${PBS_EXEC}/etc/pbs_mpihp ] ; then
 
    fi
 elif [ $mpirun_found -eq 0 ] && #    Platform bought HP MPI so match either
-     [ `(mpirun -version | egrep -c "HP MPI|Platform") 2>/dev/null` -ne 0 ] ; then
+     [ `(mpirun -version | grep -E -c "HP MPI|Platform") 2>/dev/null` -ne 0 ] ; then
    mpirun=mpirun
 else
    echo "HP version of mpirun not found"
