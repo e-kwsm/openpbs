@@ -163,7 +163,7 @@ check_status() {
 	cd ${PBS_HOME}/datastore
 	if [ $? -ne 0 ]; then
 		echo "Could not change directory to ${PBS_HOME}/datastore"
-		exit -1
+		exit 1
 	fi
 
 	res=`${data_srv_bin} -s status 2>&1`
