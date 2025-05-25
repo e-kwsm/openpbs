@@ -79,7 +79,7 @@ done
 
 PBS_EXEC_BIN=${PBS_EXEC}/bin
 PBS_LIB_PATH=${PBS_EXEC}/lib
-if [ ! -d ${PBS_LIB_PATH} -a -d ${PBS_EXEC}/lib64 ] ; then
+if [ ! -d ${PBS_LIB_PATH} ] && [ -d ${PBS_EXEC}/lib64 ] ; then
 	PBS_LIB_PATH=${PBS_EXEC}/lib64
 fi
 
