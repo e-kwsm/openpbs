@@ -391,7 +391,7 @@ extern void set_vnode_state(struct pbsnode *, unsigned long, enum vnode_state_op
 extern struct resvinfo *find_vnode_in_resvs(struct pbsnode *, enum vnode_degraded_op);
 extern void free_rinf_list(struct resvinfo *);
 extern void degrade_offlined_nodes_reservations(void);
-extern void degrade_downed_nodes_reservations(void);
+extern void degrade_downed_nodes_reservations(struct work_task *);
 
 extern int mod_node_ncpus(struct pbsnode *pnode, long ncpus, int actmode);
 extern int initialize_pbsnode(struct pbsnode *, char *, int);
