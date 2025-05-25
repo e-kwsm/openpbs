@@ -468,11 +468,7 @@ void
 }
 
 int
-PBS_StatServ(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_StatServ(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	struct batch_status *bs;
@@ -518,11 +514,7 @@ char *argv[];
 }
 
 int
-PBS_StatJob(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_StatJob(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	struct batch_status *bs;
@@ -564,11 +556,7 @@ char *argv[];
 }
 
 int
-PBS_SelStat(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_SelStat(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	char *msg;
 	struct batch_status *bs;
