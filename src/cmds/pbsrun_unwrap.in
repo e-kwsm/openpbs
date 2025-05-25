@@ -113,7 +113,7 @@ orig_mpirun="${orig_mpirun_dir}/${orig_mpirun_name}"
 echo "$progname: saving a copy of $actual_mpirun to ${orig_mpirun}.back$$"
 res=`exec_cmd cp $actual_mpirun ${orig_mpirun}.back$$`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -c FAILED` -ne 0 ] ; then
         exit 1
 fi
 
@@ -121,30 +121,30 @@ echo "$progname: restoring $actual_mpirun to $orig_mpirun"
 
 res=`exec_cmd rm -f ${PBS_LIB_PATH}/MPI/${pbs_mpirun}.link`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -c FAILED` -ne 0 ] ; then
         exit 1
 fi
 
 res=`exec_cmd rm -f $orig_mpirun`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -c FAILED` -ne 0 ] ; then
         exit 1
 fi
 
 res=`exec_cmd rm -f ${PBS_EXEC_BIN}/${pbs_mpirun}`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -c FAILED` -ne 0 ] ; then
         exit 1
 fi
 
 res=`exec_cmd rm -f ${PBS_LIB_PATH}/MPI/${pbs_mpirun}.init`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -c FAILED` -ne 0 ] ; then
         exit 1
 fi
 
 res=`exec_cmd mv $actual_mpirun $orig_mpirun`
 echo $res
-if [ `echo $res | egrep -c FAILED` -ne 0 ] ; then
+if [ `echo $res | grep -c FAILED` -ne 0 ] ; then
         exit 1
 fi
