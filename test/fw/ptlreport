@@ -129,7 +129,7 @@ while [ "$1" != "" ]; do
 done
 
 summary_line=`sed -n '/^run:.*: [0-9]*$/p' ${ptl_test_log}`
-read total_ct pass_ct fail_ct err_ct skip_ct timedout_ct <<< \
+read -r total_ct pass_ct fail_ct err_ct skip_ct timedout_ct <<< \
 	`echo ${summary_line} | awk -F '[,:]' \
 	'ORS=" " { for (i=2; i<=NF; i=i+2) { gsub(/^[ \t]+/, "", $i); print $i } }'`
 
