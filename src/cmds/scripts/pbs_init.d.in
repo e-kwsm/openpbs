@@ -114,7 +114,7 @@ lc_host_name()
 : check_started
 check_started() {
 	ps_out=`ps -p $1 -o args 2> /dev/null | tail -1`
-	if [ -z "${ps_out}" -o "`echo ${ps_out} | cut -c1`" = "[" ]; then
+	if [ -z "${ps_out}" ] || [ "`echo ${ps_out} | cut -c1`" = "[" ]; then
 		ps_out=`ps -p $1 -o command 2> /dev/null | tail -1`
 		if [ -z "${ps_out}" ]; then
 			return 1
@@ -236,7 +236,7 @@ check_core() {
 # Return the name of the PBS server host
 get_server_hostname() {
 	shn=""
-	if [ -z "${PBS_PRIMARY}" -o -z "${PBS_SECONDARY}" ] ; then
+	if [ -z "${PBS_PRIMARY}" ] || [ -z "${PBS_SECONDARY}" ] ; then
 		if [ -z "${PBS_SERVER_HOST_NAME}" ]; then
 			shn="${PBS_SERVER}"
 		else
@@ -262,7 +262,7 @@ start_pbs() {
 
 	# Perform sanity checks
 	server_hostname=`get_server_hostname`
-	if [ -z "${server_hostname}" -o "${server_hostname}" = 'CHANGE_THIS_TO_PBS_SERVER_HOSTNAME' ] ; then
+	if [ -z "${server_hostname}" ] || [ "${server_hostname}" = 'CHANGE_THIS_TO_PBS_SERVER_HOSTNAME' ] ; then
 		echo "***" >&2
 		echo "*** The hostname of the PBS server in ${conf} is invalid." >&2
 		echo "*** Update the configuration file before starting PBS." >&2
@@ -288,15 +288,15 @@ start_pbs() {
 	# 4) PBS_HOME/datastore does not exist and this is a server
 	needmakehome=0
 	[ ! -d "${PBS_HOME}" ] && needmakehome=1
-	[ ${needmakehome} -eq 0 -a ! -f "${PBS_HOME}/pbs_version" ] && needmakehome=2
+	[ ${needmakehome} -eq 0 ] && [ ! -f "${PBS_HOME}/pbs_version" ] && needmakehome=2
 	if [ ${needmakehome} -eq 0 ]; then
 		qstatver=`${PBS_EXEC}/bin/qstat --version | sed -e "s/^.* = //"`
 		homever=`cat ${PBS_HOME}/pbs_version`
 		[ "${qstatver}" != "${homever}" ] && needmakehome=3
 	fi
-	[ ${needmakehome} -eq 0 -a "${PBS_START_SERVER}" != "0" -a ! -d "${PBS_HOME}/datastore" ] && needmakehome=4
+	[ ${needmakehome} -eq 0 ] && [ "${PBS_START_SERVER}" != "0" ] && [ ! -d "${PBS_HOME}/datastore" ] && needmakehome=4
 
-	if [ ${needmakehome} -ne 0 -a ! -x ${PBS_EXEC}/libexec/pbs_habitat ]; then
+	if [ ${needmakehome} -ne 0 ] && [ ! -x ${PBS_EXEC}/libexec/pbs_habitat ]; then
 		echo "***" >&2
 		echo "*** ${PBS_EXEC}/libexec/pbs_habitat is missing." >&2
 		echo "***" >&2
@@ -441,7 +441,7 @@ stop_pbs() {
 		sed -e "s/.*server_host = //"\``
 		if check_prog "server" ; then
 			if [ "${my_hostname}" = "${active_server}" ]; then
-				if [ -z "${PBS_SECONDARY}" -o ${is_secondary} -eq 1 ]; then
+				if [ -z "${PBS_SECONDARY}" ] || [ ${is_secondary} -eq 1 ]; then
 					echo "Shutting server down with qterm."
 				else
 					echo "This is active server, shutting down with qterm, secondary will take over."
@@ -592,9 +592,9 @@ is_boottime()
 	[ $? -ne 0 ] && return 1
 
 	PYTHON_EXE=${PBS_EXEC}/python/bin/python
-	if [ -z "${PYTHON_EXE}" -o ! -x "${PYTHON_EXE}" ] ; then
+	if [ -z "${PYTHON_EXE}" ] || [ ! -x "${PYTHON_EXE}" ] ; then
 		PYTHON_EXE=`type python3 2>/dev/null | cut -d' ' -f3`
-		if [ -z "${PYTHON_EXE}" -o ! -x "${PYTHON_EXE}" ] ; then
+		if [ -z "${PYTHON_EXE}" ] || [ ! -x "${PYTHON_EXE}" ] ; then
 			return 1
 		fi
 	fi
@@ -658,7 +658,7 @@ if [ ! -d "${PBS_EXEC}" ]; then
 fi
 
 pbslibdir="${PBS_EXEC}/lib"
-[ ! -d "${pbslibdir}" -a -d "${PBS_EXEC}/lib64" ] && pbslibdir="${PBS_EXEC}/lib64"
+[ ! -d "${pbslibdir}" ] && [ -d "${PBS_EXEC}/lib64" ] && pbslibdir="${PBS_EXEC}/lib64"
 
 if [ -z "${PBS_HOME}" ]; then
 	echo "PBS_HOME is undefined." >&2
