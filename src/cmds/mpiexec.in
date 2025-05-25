@@ -517,7 +517,7 @@ sgicheckppversion()
 	sgi_ppversmin=4
 	if [ -r $sgi_release ]
 	then
-		read sgi propack propackvers rest < $sgi_release
+		read -r sgi propack propackvers rest < $sgi_release
 		if [ "$sgi" != "SGI" -o "$propack" != "ProPack" ]
 		then
 			logerr "$sgi_release:  unexpected contents"
