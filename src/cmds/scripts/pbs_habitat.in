@@ -38,7 +38,7 @@
 # subject to Altair's trademark licensing policies.
 
 
-if [ $# -eq 1 -a "$1" = "--version" ]; then
+if [ $# -eq 1 ] && [ "$1" = "--version" ]; then
    echo pbs_version = @PBS_VERSION@
    exit 0
 fi
@@ -102,13 +102,13 @@ chkenv() {
 }
 
 createdir() {
-	if [ -n "$1" -a ! -d "$1" ]; then
+	if [ -n "$1" ] && [ ! -d "$1" ]; then
 		if ! mkdir -p "$1"; then
 			echo "*** Could not create $1"
 			exit 1
 		fi
 	fi
-	if [ -n "$1" -a -n "$2" ]; then
+	if [ -n "$1" ] && [ -n "$2" ]; then
 		chmod "$2" "$1"
 	fi
 }
@@ -122,7 +122,7 @@ createpath() {
 # Return the name of the PBS server host
 get_server_hostname() {
 	shn=""
-	if [ -z "${PBS_PRIMARY}" -o -z "${PBS_SECONDARY}" ] ; then
+	if [ -z "${PBS_PRIMARY}" ] || [ -z "${PBS_SECONDARY}" ] ; then
 		if [ -z "${PBS_SERVER_HOST_NAME}" ]; then
 			shn="${PBS_SERVER}"
 		else
@@ -201,7 +201,7 @@ if [ -z "$PBS_HOME" ]; then
 	echo "*** PBS_HOME is not set"
 	exit 1
 fi
-if [ ! -d "$PBS_HOME" -o ! "$(/bin/ls -A $PBS_HOME)" ]; then
+if [ ! -d "$PBS_HOME" ] || [ ! "$(/bin/ls -A $PBS_HOME)" ]; then
 	echo "*** WARNING: PBS_HOME not found in $PBS_HOME"
 	if [ -x "$PBS_EXEC/sbin/pbs_server" ]; then
 		component="server"
