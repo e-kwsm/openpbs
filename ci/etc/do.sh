@@ -61,13 +61,13 @@ cd ${PBS_DIR}
 MAJOR_VERSION="${VERSION_ID%%.*}"
 SPEC_FILE=$(/bin/ls -1 ${PBS_DIR}/*.spec)
 REQ_FILE=${PBS_DIR}/test/fw/requirements.txt
-if [ ! -r ${SPEC_FILE} -o ! -r ${REQ_FILE} ]; then
+if [ ! -r ${SPEC_FILE} ] || [ ! -r ${REQ_FILE} ]; then
   echo "Couldn't find pbs spec file or ptl requirements file"
   exit 1
 fi
 
-if [ "x${IS_CI_BUILD}" != "x1" ] || [ "x${FIRST_TIME_BUILD}" == "x1" -a "x${IS_CI_BUILD}" == "x1" ]; then
-  if [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x7" ]; then
+if [ "x${IS_CI_BUILD}" != "x1" ] || [ "x${FIRST_TIME_BUILD}" == "x1" ] && [ "x${IS_CI_BUILD}" == "x1" ]; then
+  if [ "x${ID}" == "xcentos" ] && [ "x${VERSION_ID}" == "x7" ]; then
     yum clean all
     yum -y install yum-utils epel-release rpmdevtools
     yum -y install python3-pip sudo which net-tools man-db time.x86_64 \
@@ -84,7 +84,7 @@ if [ "x${IS_CI_BUILD}" != "x1" ] || [ "x${FIRST_TIME_BUILD}" == "x1" -a "x${IS_C
     rm -rf cJSON
     git clone https://github.com/DaveGamble/cJSON.git
     cd cJSON; mkdir build; cd build; cmake3 .. -DCMAKE_INSTALL_PREFIX=/usr; make; make install; cd ../../
-  elif [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x8" ]; then
+  elif [ "x${ID}" == "xcentos" ] && [ "x${VERSION_ID}" == "x8" ]; then
     export LANG="C.utf8"
     sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
     sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*
@@ -101,7 +101,7 @@ if [ "x${IS_CI_BUILD}" != "x1" ] || [ "x${FIRST_TIME_BUILD}" == "x1" -a "x${IS_C
     if [ "x${BUILD_MODE}" == "xkerberos" ]; then
       dnf -y install krb5-libs krb5-devel libcom_err libcom_err-devel
     fi
-  elif [ "x${ID}" == "xrocky" -a "x${MAJOR_VERSION}" == "x9" ]; then
+  elif [ "x${ID}" == "xrocky" ] && [ "x${MAJOR_VERSION}" == "x9" ]; then
     export LANG="C.utf8"
     dnf -y clean all
     yum -y install yum-utils
@@ -117,7 +117,7 @@ if [ "x${IS_CI_BUILD}" != "x1" ] || [ "x${FIRST_TIME_BUILD}" == "x1" -a "x${IS_C
     if [ "x${BUILD_MODE}" == "xkerberos" ]; then
       dnf -y install krb5-libs krb5-devel libcom_err libcom_err-devel
     fi
-  elif [ "x${ID}" == "xopensuse" -o "x${ID}" == "xopensuse-leap" ]; then
+  elif [ "x${ID}" == "xopensuse" ] || [ "x${ID}" == "xopensuse-leap" ]; then
     zypper -n ref
     zypper -n install rpmdevtools python3-pip sudo which net-tools man time.x86_64 git
     rpmdev-setuptree
@@ -155,13 +155,13 @@ if [ "x${IS_CI_BUILD}" != "x1" ] || [ "x${FIRST_TIME_BUILD}" == "x1" -a "x${IS_C
   fi
 fi
 
-if [ "x${FIRST_TIME_BUILD}" == "x1" -a "x${IS_CI_BUILD}" == "x1" ]; then
+if [ "x${FIRST_TIME_BUILD}" == "x1" ] && [ "x${IS_CI_BUILD}" == "x1" ]; then
   echo "### First time build is complete ###"
   echo "READY:$(hostname -s)" >>${config_dir}/${STATUS_FILE}
   exit 0
 fi
 
-if [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x8" ]; then
+if [ "x${ID}" == "xcentos" ] && [ "x${VERSION_ID}" == "x8" ]; then
   export LANG="C.utf8"
   swig_opt="--with-swig=/usr/local"
   if [ ! -f /tmp/swig/swig/configure ]; then
@@ -183,7 +183,7 @@ if [ "x${ONLY_INSTALL_DEPS}" == "x1" ]; then
   exit 0
 fi
 _targetdirname=target-${ID}-$(hostname -s)
-if [ "x${ONLY_INSTALL}" != "x1" -a "x${ONLY_REBUILD}" != "x1" -a "x${ONLY_TEST}" != "x1" ]; then
+if [ "x${ONLY_INSTALL}" != "x1" ] && [ "x${ONLY_REBUILD}" != "x1" ] && [ "x${ONLY_TEST}" != "x1" ]; then
   rm -rf ${_targetdirname}
 fi
 mkdir -p ${_targetdirname}
@@ -195,7 +195,7 @@ fi
 if [ ! -f ./configure ]; then
   ./autogen.sh
 fi
-if [ "x${ONLY_REBUILD}" != "x1" -a "x${ONLY_INSTALL}" != "x1" -a "x${ONLY_TEST}" != "x1" ]; then
+if [ "x${ONLY_REBUILD}" != "x1" ] && [ "x${ONLY_INSTALL}" != "x1" ] && [ "x${ONLY_TEST}" != "x1" ]; then
   _cflags="-g -O2 -Wall -Werror"
   if [ "x${ID}" == "xubuntu" ]; then
     _cflags="${_cflags} -Wno-unused-result"
@@ -249,7 +249,7 @@ prefix=$(cat ${config_dir}/${CONFIGURE_OPT_FILE} | awk -F'prefix=' '{print $2}' 
 if [ "x${prefix}" == "x" ]; then
   prefix='/opt/pbs'
 fi
-if [ "x${ONLY_INSTALL}" == "x1" -o "x${ONLY_TEST}" == "x1" ]; then
+if [ "x${ONLY_INSTALL}" == "x1" ] || [ "x${ONLY_TEST}" == "x1" ]; then
   echo "skipping make"
 else
   if [ ! -f ${PBS_DIR}/${_targetdirname}/Makefile ]; then
