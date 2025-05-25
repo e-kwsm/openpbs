@@ -911,44 +911,28 @@ struct attropl *attr;
 }
 
 int
-PBS_EnableQueue(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_EnableQueue(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	static struct attropl attr = {NULL, "enabled", NULL, "TRUE", SET};
 	return PBS_QueueOp(clientData, interp, argc, argv, &attr);
 }
 
 int
-PBS_DisableQueue(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_DisableQueue(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	static struct attropl attr = {NULL, "enabled", NULL, "FALSE", SET};
 	return PBS_QueueOp(clientData, interp, argc, argv, &attr);
 }
 
 int
-PBS_StartQueue(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_StartQueue(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	static struct attropl attr = {NULL, "started", NULL, "TRUE", SET};
 	return PBS_QueueOp(clientData, interp, argc, argv, &attr);
 }
 
 int
-PBS_StopQueue(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+PBS_StopQueue(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	static struct attropl attr = {NULL, "started", NULL, "FALSE", SET};
 	return PBS_QueueOp(clientData, interp, argc, argv, &attr);
@@ -1310,10 +1294,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-PBS_ResvStatus(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
+PBS_ResvStatus(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 char *CONST argv[];
 {
 	char *msg;
@@ -1349,10 +1330,7 @@ char *CONST argv[];
 }
 
 int
-PBS_ResvConfirm(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
+PBS_ResvConfirm(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 char *CONST argv[];
 {
 	char *msg = NULL;
@@ -1385,10 +1363,7 @@ char *CONST argv[];
 }
 
 int
-PBS_ResvDelete(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
+PBS_ResvDelete(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 char *CONST argv[];
 {
 	char *msg = NULL;
@@ -1450,11 +1425,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-DateTime(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+DateTime(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	time_t when;
 	struct tm tm, *t = NULL;
