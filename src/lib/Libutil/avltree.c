@@ -376,7 +376,8 @@ way3ix(way3 x) /* assume x != 0 */
  TREE
  ******************************************************************************/
 
-typedef int bool;
+//typedef int bool;
+#include <stdbool.h>
 
 /**
  * @brief
