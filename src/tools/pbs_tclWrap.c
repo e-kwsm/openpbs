@@ -934,11 +934,7 @@ PBS_StopQueue(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 }
 
 int
-PBS_AlterJob(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+PBS_AlterJob(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	static char id[] = "PBS_AlterJob";
 	char *msg;
@@ -1048,11 +1044,7 @@ done:
 }
 
 int
-PBS_RescQuery(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+PBS_RescQuery(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	static char id[] = "PBS_RescQuery";
 	char *msg;
@@ -1177,11 +1169,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-PBS_RescReserve(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+PBS_RescReserve(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	static char id[] = "PBS_RescReserve";
 	char *msg;
@@ -1244,11 +1232,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-PBS_RescRelease(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+PBS_RescRelease(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	char *msg;
 	int ret;
@@ -1289,8 +1273,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-PBS_ResvStatus(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
-char *CONST argv[];
+PBS_ResvStatus(ClientData clientData, Tcl_Interp *interp, int argc, char *CONST argv[])
 {
 	char *msg;
 	struct batch_status *bs;
@@ -1325,8 +1308,7 @@ char *CONST argv[];
 }
 
 int
-PBS_ResvConfirm(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
-char *CONST argv[];
+PBS_ResvConfirm(ClientData clientData, Tcl_Interp *interp, int argc, char *CONST argv[])
 {
 	char *msg = NULL;
 	unsigned long stime = 0;
@@ -1358,8 +1340,7 @@ char *CONST argv[];
 }
 
 int
-PBS_ResvDelete(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
-char *CONST argv[];
+PBS_ResvDelete(ClientData clientData, Tcl_Interp *interp, int argc, char *CONST argv[])
 {
 	char *msg = NULL;
 
@@ -1385,11 +1366,7 @@ char *CONST argv[];
 }
 
 int
-LogMsg(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+LogMsg(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	char *tag = NULL;
 	char *msg = NULL;
@@ -1545,11 +1522,7 @@ DateTime(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 }
 
 int
-StrFtime(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+StrFtime(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	struct tm *t;
 	long hold;
@@ -1576,11 +1549,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-PBS_PbsPortInfoCmd(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+PBS_PbsPortInfoCmd(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	int index, result;
 	static const char *subCmds[] = {
