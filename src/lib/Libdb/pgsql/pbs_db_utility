@@ -318,7 +318,7 @@ pbs_install_db () {
 		locale="--locale=C"
 	fi
 
-	if [ ! -z "${PBS_DATA_SERVICE_HOST}" ]; then
+	if [ -n "${PBS_DATA_SERVICE_HOST}" ]; then
 		echo "Custom data service host used...configure manually"
 		exit 0
 	fi

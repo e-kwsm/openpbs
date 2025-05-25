@@ -42,7 +42,7 @@ killit() {
         return 0
     fi
     pid=$(ps -ef 2>/dev/null | grep $1 | grep -v grep | awk '{print $2}')
-    if [ ! -z "${pid}" ]; then
+    if [ -n "${pid}" ]; then
         echo "kill -TERM ${pid}"
         kill -TERM ${pid} 2>/dev/null
     else
@@ -50,7 +50,7 @@ killit() {
     fi
     sleep 10
     pid=$(ps -ef 2>/dev/null | grep $1 | grep -v grep | awk '{print $2}')
-    if [ ! -z "${pid}" ]; then
+    if [ -n "${pid}" ]; then
         echo "kill -KILL ${pid}"
         kill -KILL ${pid} 2>/dev/null
     fi
