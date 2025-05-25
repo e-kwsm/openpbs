@@ -108,7 +108,7 @@ revoke_db_trust_login() {
 }
 
 backupdir() {
-	if [ -d "$1" -a -d "$2" ]; then
+	if [ -d "$1" ] && [ -d "$2" ]; then
 		backupdir="$(basename $1).pre.${PBS_VERSION}"
 		echo "*** Backing up $1 to ${2}/${backupdir}"
 		mv "$1" "${2}/${backupdir}"
