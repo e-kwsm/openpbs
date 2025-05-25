@@ -142,16 +142,16 @@ match_opt ()
 
     	opt_num_args=`printf "%s" "$1" | awk -F":" '{ print $NF }'`
 
-	# wcard_str is for egrep matching and not glob
+	# wcard_str is for grep -E matching and not glob
 	wcard_str=""
-	if [ `printf "%s" $opt_2match | egrep -c "\*"` -ne 0 ]  ; then
+	if [ `printf "%s" $opt_2match | grep -E -c "\*"` -ne 0 ]  ; then
 		wcard_str=`printf "%s" $opt_2match | sed 's/*/.+/g'`
 	fi
 
-	# if opt_given contains wildcard "*", then do egrep matching
+	# if opt_given contains wildcard "*", then do grep -E matching
 	if [ "$opt_2match" = "$opt_given" ]  || \
 	   ([ "$wcard_str" != "" ] && \
-	    [ `printf "%s" $opt_given | egrep -c -e "$wcard_str"` -ne 0 ]) ; then
+	    [ `printf "%s" $opt_given | grep -E -c -e "$wcard_str"` -ne 0 ]) ; then
 		echo $opt_num_args
 		return
 	fi
@@ -220,16 +220,16 @@ match_opt2 ()
 			continue
 		fi
 
-		# wcard_str is for egrep matching and not glob
+		# wcard_str is for grep -E matching and not glob
 		wcard_str=""
-		if [ `printf "%s" $1 | egrep -c "\*"` -ne 0 ]  ; then
+		if [ `printf "%s" $1 | grep -E -c "\*"` -ne 0 ]  ; then
 			wcard_str=`printf "%s" $1 | sed 's/*/.+/g'`
 		fi
 
 
 		if [ "$opt_given" = "$1" ] || \
 		   ([ "$wcard_str" != "" ] && \
-		    [ `printf "%s" $opt_given | egrep -c -e "$wcard_str"` -ne 0 ]) ; then
+		    [ `printf "%s" $opt_given | grep -E -c -e "$wcard_str"` -ne 0 ]) ; then
 			echo 0
 			return
 		fi
@@ -442,7 +442,7 @@ while [ $line -le $num_lines ] ; do
 	cmd_seg=`eval sed -n '${line}p' $configfile`
 
 	# skip past comment lines
-	while [ `printf "%s" "$cmd_seg" | egrep -c "^#"` -ne 0 ] ; do
+	while [ `printf "%s" "$cmd_seg" | grep -E -c "^#"` -ne 0 ] ; do
 		line=`expr $line + 1`
 		if [ $line -gt $num_lines ] ; then
 			# go to top loop

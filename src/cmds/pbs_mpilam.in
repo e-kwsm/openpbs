@@ -116,7 +116,7 @@ done
 # attach the pids of lamds that may have been
 # started by tm-enabled lamboot.
 
-if [ `(lamboot -V | egrep -c "LAM 7") 2>/dev/null` -ne 0 ] ; then
+if [ `(lamboot -V | grep -E -c "LAM 7") 2>/dev/null` -ne 0 ] ; then
 	s_opt="-s"
 else
 	s_opt=""
