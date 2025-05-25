@@ -84,7 +84,7 @@ createdir() {
 }
 
 createpath() {
-	while read mode dir; do
+	while read -r mode dir; do
 		createdir "${PBS_HOME}/${dir}" $mode
 	done
 }
