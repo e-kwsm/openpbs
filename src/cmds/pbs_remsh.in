@@ -83,11 +83,11 @@ while [ $# -gt 1 ]; do
 	fi
 done
 
-if [ ! -z "$jobid" ] ; then
+if [ -n "$jobid" ] ; then
         export PBS_JOBID=$jobid
 fi
 
-if [ ! -z "$rshcmd" ] ; then
+if [ -n "$rshcmd" ] ; then
         export PBS_RSHCOMMAND=$rshcmd
 fi
 

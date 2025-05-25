@@ -233,7 +233,7 @@ case "$1" in
 			server_pid="`ps -ef | grep "pbs_server.bi[n]" | awk '{print $2}'`"
 			if [ -z "${server_pid}" ]; then
 				server_host="`${PBS_EXEC}/bin/qstat -Bf | grep 'server_host' | awk '{print $NF}'`"
-				if [ ! -z "${server_host}" ]; then
+				if [ -n "${server_host}" ]; then
 					echo "PBS server is running on host ${server_host}."
 				fi
 				echo "Please check pbs.conf file to verify PBS is configured with correct server host value. Exiting."
