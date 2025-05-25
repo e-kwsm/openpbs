@@ -56,7 +56,7 @@ PBS_CONF_FILE=${PBS_CONF_FILE:-@PBS_CONF_FILE@}
 test -f $PBS_CONF_FILE && . $PBS_CONF_FILE
 
 PBS_LIB_PATH=${PBS_EXEC}/lib
-if [ ! -d ${PBS_LIB_PATH} -a -d ${PBS_EXEC}/lib64 ] ; then
+if [ ! -d ${PBS_LIB_PATH} ] && [ -d ${PBS_EXEC}/lib64 ] ; then
 	PBS_LIB_PATH=${PBS_EXEC}/lib64
 fi
 
