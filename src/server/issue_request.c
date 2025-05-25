@@ -201,7 +201,7 @@ reissue_to_svr(struct work_task *pwt)
 		/* either timed-out or got hard error, tell post-function  */
 		pwt->wt_aux = -1;   /* seen as error by post function  */
 		pwt->wt_event = -1; /* seen as connection by post func */
-		((void (*)()) pwt->wt_parm2)(pwt);
+		((void (*)(struct work_task *)) pwt->wt_parm2)(pwt);
 	}
 	return;
 }
@@ -326,7 +326,7 @@ release_req(struct work_task *pwt)
  *
  */
 struct work_task *
-add_mom_deferred_list(int stream, mominfo_t *minfo, void (*func)(), char *msgid, void *parm1, void *parm2)
+add_mom_deferred_list(int stream, mominfo_t *minfo, void (*func)(struct work_task *), char *msgid, void *parm1, void *parm2)
 {
 	struct work_task *ptask = NULL;
 
