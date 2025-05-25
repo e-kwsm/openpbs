@@ -40,7 +40,7 @@
 
 is_systemd=1
 _status=$(systemctl is-system-running 2>/dev/null)
-if [ ! "${_status}" -o "x${_status}" = "xoffline" -o "x${_status}" = "xunknown" ] ; then
+if [ ! "${_status}" ] || [ "x${_status}" = "xoffline" ] || [ "x${_status}" = "xunknown" ] ; then
     is_systemd=0
 fi
 if [ $is_systemd -eq 1 ] ; then
@@ -51,7 +51,7 @@ if [ $is_systemd -eq 1 ] ; then
 
     pstmstr_pid_found=0
     try=0
-    while [ $try -lt 10 -a $pstmstr_pid_found -ne 1 ]
+    while [ $try -lt 10 ] && [ $pstmstr_pid_found -ne 1 ]
     do
         sleep 1
         if [ -f ${PBS_HOME}/datastore/postmaster.pid ] ; then
