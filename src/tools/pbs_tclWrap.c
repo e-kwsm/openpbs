@@ -872,12 +872,7 @@ PBS_HoldJob(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 }
 
 int
-PBS_QueueOp(clientData, interp, argc, argv, attr)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
-struct attropl *attr;
+PBS_QueueOp(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[], struct attropl *attr)
 {
 	int merr;
 
