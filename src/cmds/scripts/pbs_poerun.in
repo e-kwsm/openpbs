@@ -90,7 +90,7 @@ extract_wins() {
 	IFS="$oldifs"
 }
 
-if [ "XX$PBS_EUILIB" != "XXip" -a "${PBS_HPS_JOBKEY:-XX}" != "XX" ]; then
+if [ "XX$PBS_EUILIB" != "XXip" ] && [ "${PBS_HPS_JOBKEY:-XX}" != "XX" ]; then
 	export MP_PARTITION=$PBS_HPS_JOBKEY
 
 	extract_wins $PBS_HPS_ADAPTERS $PBS_HPS_WINDOWS
@@ -103,17 +103,17 @@ if [ "XX$PBS_EUILIB" != "XXip" -a "${PBS_HPS_JOBKEY:-XX}" != "XX" ]; then
 		unset MP_LAPI_INET_ADDR
 		export MP_LAPI_NETWORK=@$PBS_HPS_ADAPTERS:$data1
 	fi
-elif [ "XX$PBS_EUILIB" != "XXip" -a "${PBS_AIXIB_JOBKEY:-XX}" != "XX" ]; then
+elif [ "XX$PBS_EUILIB" != "XXip" ] && [ "${PBS_AIXIB_JOBKEY:-XX}" != "XX" ]; then
 	export MP_PARTITION=$PBS_AIXIB_JOBKEY
 
 	# The lapi keywords are only genereated in lower case by poe.
 	# The mpi keyword will be "MPI" if the user doesn't set it and
 	# all lower case if the user sets it.
-	if [ "$MP_MSG_API" = "MPI" -o "$MP_MSG_API" = "mpi" ]; then
+	if [ "$MP_MSG_API" = "MPI" ] || [ "$MP_MSG_API" = "mpi" ]; then
 		extract_wins $PBS_AIXIB_NETWORKS $PBS_AIXIB_WINDOWS
 		unset MP_CHILD_INET_ADDR
 		export MP_MPI_NETWORK=@$PBS_AIXIB_NETWORKS:$data1
-	elif [ "$MP_MSG_API" = "lapi" -o "$MP_MSG_API" = "mpi_lapi" ]; then
+	elif [ "$MP_MSG_API" = "lapi" ] || [ "$MP_MSG_API" = "mpi_lapi" ]; then
 		extract_wins $PBS_AIXIB_NETWORKS $PBS_AIXIB_WINDOWS
 		unset MP_LAPI_INET_ADDR
 		export MP_LAPI_NETWORK=@$PBS_AIXIB_NETWORKS:$data1
