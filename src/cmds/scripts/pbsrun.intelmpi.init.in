@@ -356,7 +356,7 @@ evaluate_options_action () {
 		awk '{if ($1 == 1) print $2, $3; else print $2, $3 ":" $1}'|\
 		sort -n | awk '{print $2}' > $pbs_machinefile
 
-	if [ "x$I_MPI_PROCESS_MANAGER" != "xmpd" -a \
+	if [ "x$I_MPI_PROCESS_MANAGER" != "xmpd" ] && [ \
 				"x$I_MPI_PROCESS_MANAGER" != "xMPD" ] && hydra_supported ;then
 		printf "%s" "-hostfile=$pbs_hostsfile $first -machinefile $pbs_machinefile $args"
 	else
@@ -412,7 +412,7 @@ configfile_cmdline_action () {
 	sort -u $PBS_NODEFILE > $pbs_hostsfile
 	num_mpds=`wc -l $pbs_hostsfile | awk '{print $1}'`
 
-	if [ "x$I_MPI_PROCESS_MANAGER" != "xmpd" -a \
+	if [ "x$I_MPI_PROCESS_MANAGER" != "xmpd" ] && [ \
 				"x$I_MPI_PROCESS_MANAGER" != "xMPD" ] && hydra_supported ;then
 		printf "%s" "-hostfile=$pbs_hostsfile $first $args"
 	else
