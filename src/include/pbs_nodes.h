@@ -461,7 +461,7 @@ struct pbsnode *node_recov_db(char *nd_name, struct pbsnode *pnode);
 extern int add_mom_to_pool(mominfo_t *);
 extern void reset_pool_inventory_mom(mominfo_t *);
 extern vnpool_mom_t *find_vnode_pool(mominfo_t *pmom);
-extern void mcast_msg();
+extern void mcast_msg(struct work_task *);
 int get_job_share_type(struct job *pjob);
 #endif
 
