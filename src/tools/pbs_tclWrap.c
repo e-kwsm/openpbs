@@ -102,11 +102,7 @@ int (*local_disconnect)(int connection) = __pbs_disconnect;
 #endif
 
 int
-OpenRM(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+OpenRM(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	int port = 0;
 	int fd;
@@ -135,11 +131,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-CloseRM(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+CloseRM(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	int fd, ret;
 	char *cmd;
@@ -168,11 +160,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-DownRM(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+DownRM(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	int fd, ret;
 	char *cmd;
@@ -237,11 +225,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-AddREQ(clientData, interp, objc, objv)
-ClientData clientData;
-Tcl_Interp *interp;
-int objc;
-Tcl_Obj *CONST objv[];
+AddREQ(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
 {
 	int fd, ret;
 	char *cmd, *request;
@@ -273,11 +257,7 @@ Tcl_Obj *CONST objv[];
 }
 
 int
-AllREQ(clientData, interp, argc, argv)
-ClientData clientData;
-Tcl_Interp *interp;
-int argc;
-char *argv[];
+AllREQ(ClientData clientData, Tcl_Interp *interp, int argc, char *argv[])
 {
 	int ret;
 
@@ -1754,8 +1734,7 @@ Tcl_Obj *CONST objv[];
 }
 
 void
-	add_cmds(interp)
-		Tcl_Interp *interp;
+	add_cmds(Tcl_Interp *interp)
 {
 	extern void site_cmds(Tcl_Interp * interp);
 
