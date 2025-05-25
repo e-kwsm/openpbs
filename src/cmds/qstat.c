@@ -76,7 +76,7 @@ extern char *tcl_atrsep;
 /* default server */
 char *def_server;
 
-static void states();
+static void states(char *string, char *q, char *r, char *h, char *w, char *t, char *e, int len);
 static char *cvtResvstate(char *);
 static int cmp_est_time(struct batch_status *a, struct batch_status *b);
 char *cnvt_est_start_time(char *start_time, int shortform);
