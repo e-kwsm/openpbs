@@ -54,7 +54,7 @@ fi
 
 . ${PBS_CONF_FILE:-@PBS_CONF_FILE@}
 PBS_LIB_PATH="${PBS_EXEC}/lib"
-if [ ! -d ${PBS_LIB_PATH} -a -d ${PBS_EXEC}/lib64 ] ; then
+if [ ! -d ${PBS_LIB_PATH} ] && [ -d ${PBS_EXEC}/lib64 ] ; then
 	PBS_LIB_PATH=${PBS_EXEC}/lib64
 fi
 
@@ -93,7 +93,7 @@ if [ "${PBS_NODEFILE:-XX}" = "XX" ]; then
 fi
 
 # invoke man page
-if [ $# -eq 1 -a "XX$1" = "XX-h" ]; then
+if [ $# -eq 1 ] && [ "XX$1" = "XX-h" ]; then
 	exec $ibmpoe -h
 elif [ $# -eq 0 ]; then
 	echo "$name: Error, interactive program name entry not supported under PBS"
@@ -109,7 +109,7 @@ while [ $# -gt 0 ]; do
 	if [ "XX$1" = "XX-procs" ]; then
 		shift
 		export MP_PROCS="$1"
-	elif [ "XX$1" = "XX-hostfile" -o "XX$1" = "XX-hfile" ]; then
+	elif [ "XX$1" = "XX-hostfile" ] || [ "XX$1" = "XX-hfile" ]; then
 		echo "$name: Warning, $1 value replaced by PBS"
 		shift
 	elif [ "XX$1" = "XX-euilib" ]; then
@@ -138,8 +138,8 @@ done
 if [ -n "$PBS_HPS_JOBKEY" ]; then
 	if [ "XX$MP_MSG_API" = "XX" ]; then
 		export MP_MSG_API="MPI"
-	elif [ "XX$MP_MSG_API" != "XXMPI" -a "XX$MP_MSG_API" != "XXLAPI" \
-			-a "XX$MP_EUILIB" = "XXus" ]; then
+	elif [ "XX$MP_MSG_API" != "XXMPI" ] && [ "XX$MP_MSG_API" != "XXLAPI" \
+			] && [ "XX$MP_EUILIB" = "XXus" ]; then
 		export MP_EUILIB=ip
 	fi
 fi
@@ -150,7 +150,7 @@ fi
 
 export MP_HOSTFILE=$PBS_NODEFILE
 if [ -n "$MP_PROCS" ]; then	# user has set a value for procs
-	if [ $MP_PROCS -lt $pbsnp -a "$MP_EUILIB" = "us" ]; then
+	if [ $MP_PROCS -lt $pbsnp ] && [ "$MP_EUILIB" = "us" ]; then
 		echo "$name: Warning, usermode disabled due to MP_PROCS setting"
 		export MP_EUILIB="ip"
 		test "$MP_RESD" = "$PBS_MP_RESD" && unset MP_RESD
@@ -168,7 +168,7 @@ export PBS_EUILIB="$MP_EUILIB"
 
 # Don't change MP_RESD if we are doing "mixed mode" i.e. IB is requested but
 # PBS doesn't support it.  Otherwise, LoadLeveler shouldn't allocate nodes.
-if [ "$MP_DEVTYPE" != "ib" -o -n "$PBS_AIXIB_JOBKEY" ]; then
+if [ "$MP_DEVTYPE" != "ib" ] || [ -n "$PBS_AIXIB_JOBKEY" ]; then
 	export MP_RESD=no
 	unset MP_INSTANCES
 fi
@@ -176,10 +176,10 @@ fi
 # If user mode is set and PBS will provide it, unset MP_EUILIB so poe
 # doesn't contact LoadLeveler to do switch setup.
 if [ "$MP_EUILIB" = "us" ]; then
-	if [ "$MP_DEVTYPE" = "ib" -a -n "$PBS_AIXIB_JOBKEY" ]; then
+	if [ "$MP_DEVTYPE" = "ib" ] && [ -n "$PBS_AIXIB_JOBKEY" ]; then
 		unset MP_EUILIB
 		export NRT_WINDOW_COUNT=$PBS_AIXIB_NETWORKS
-	elif [ "$MP_DEVTYPE" != "ib" -a -n "$PBS_HPS_JOBKEY" ]; then
+	elif [ "$MP_DEVTYPE" != "ib" ] && [ -n "$PBS_HPS_JOBKEY" ]; then
 		unset MP_EUILIB
 	fi
 fi
