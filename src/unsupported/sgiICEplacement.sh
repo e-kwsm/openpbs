@@ -40,7 +40,7 @@
 . ${PBS_CONF_FILE:-/etc/pbs.conf}
 
 echo Setting placement set data ...
-${PBS_EXEC}/bin/pbsnodes -a | grep "^[a-zA-Z]" | while read node
+${PBS_EXEC}/bin/pbsnodes -a | grep "^[a-zA-Z]" | while read -r node
 do
     if [ -n "`echo $node | grep 'r[0-9][0-9]*i[0-9]n[0-9][0-9]*'`" ]
     then
