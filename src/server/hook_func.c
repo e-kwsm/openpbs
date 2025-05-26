@@ -145,8 +145,8 @@
 #include "acct.h"
 
 /* External functions */
-extern void disable_svr_prov();
-extern void set_srv_prov_attributes();
+extern void disable_svr_prov(void);
+extern void set_srv_prov_attributes(void);
 extern int should_retry_route(int);
 
 /* Local Private Functions */
@@ -5428,7 +5428,7 @@ sync_mom_hookfiles_count(void *minfo)
  * 		post_sendhookTPP and next_sync_mom_hookfiles.
  */
 static void
-collapse_hook_tr()
+collapse_hook_tr(void)
 {
 	hook *phook;
 	hook *phook_current;

@@ -117,12 +117,12 @@ char conn_db_host[PBS_MAXSERVERNAME + 1]; /* db host where connection is made */
 void *svr_db_conn = NULL;		  /* server's global database connection pointer */
 void *conn = NULL;			  /* pointer to work out a valid connection - later assigned to svr_db_conn */
 extern int pbs_decrypt_pwd(char *, int, size_t, char **, const unsigned char *, const unsigned char *);
-extern pid_t go_to_background();
+extern pid_t go_to_background(void);
 void *setup_db_connection(char *, int, int);
-static void *get_db_connect_information();
+static void *get_db_connect_information(void);
 static int touch_db_stop_file(void);
-static int start_db();
-void stop_db();
+static int start_db(void);
+void stop_db(void);
 
 /**
  * @brief

@@ -896,7 +896,7 @@ check_and_invoke_stonith(char *node)
  * @retval  1 - Contacted Secondary and it acknowledged the takeover request.
  */
 int
-takeover_from_secondary()
+takeover_from_secondary(void)
 {
 	struct batch_request *pfo_req;
 	pbs_net_t addr;

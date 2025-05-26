@@ -598,7 +598,7 @@ effective_node_delete(struct pbsnode *pnode)
  * @return	void
  */
 void
-setup_notification()
+setup_notification(void)
 {
 	int i;
 	int nmom;
@@ -961,7 +961,7 @@ create_subnode(struct pbsnode *pnode, struct pbssubn *lstsn)
  *
  */
 int
-setup_nodes()
+setup_nodes(void)
 {
 	pbs_db_obj_info_t obj;
 	pbs_db_node_info_t dbnode = {{0}};
@@ -1529,7 +1529,7 @@ node_pcpu_action(attribute *new, void *pobj, int actmode)
  */
 
 void
-mark_which_queues_have_nodes()
+mark_which_queues_have_nodes(void)
 {
 	int i;
 	pbs_queue *pque;

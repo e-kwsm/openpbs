@@ -965,7 +965,7 @@ acct_open(char *filename)
  * @return	void
  */
 void
-acct_close()
+acct_close(void)
 {
 	if (acct_opened == 1) {
 		(void) fclose(acctfile);

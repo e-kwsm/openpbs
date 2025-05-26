@@ -566,7 +566,7 @@ set_pipe_disposition()
  *
  */
 int
-tpp_sock_layer_init()
+tpp_sock_layer_init(void)
 {
 	return 0;
 }
@@ -584,7 +584,7 @@ tpp_sock_layer_init()
  *
  */
 int
-tpp_get_nfiles()
+tpp_get_nfiles(void)
 {
 	struct rlimit rlp;
 
@@ -613,7 +613,7 @@ tpp_get_nfiles()
  *
  */
 int
-set_pipe_disposition()
+set_pipe_disposition(void)
 {
 	struct sigaction act;
 	struct sigaction oact;
