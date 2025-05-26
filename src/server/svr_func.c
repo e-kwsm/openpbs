@@ -4368,7 +4368,7 @@ check_req_aoe_available(struct pbsnode *pnode, char *aoe_req)
  */
 
 void
-disable_svr_prov()
+disable_svr_prov(void)
 {
 	if (is_sattr_set(SVR_ATR_ProvisionEnable))
 		set_sattr_l_slim(SVR_ATR_ProvisionEnable, 0, SET);

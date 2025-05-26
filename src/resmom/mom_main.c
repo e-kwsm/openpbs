@@ -620,7 +620,7 @@ extern void cleanup_hooks_workdir(struct work_task *);
 
 extern char *getuname(void);
 extern int get_permission(char *perm);
-extern handler_ret_t check_interactive_service();
+extern handler_ret_t check_interactive_service(void);
 extern void finish_loop(time_t waittime);
 extern void usage(char *prog);
 
@@ -6873,9 +6873,9 @@ main(int argc, char *argv[])
 	job *nxpjob;
 	job *pjob;
 	extern time_t wait_time;
-	time_t getkbdtime();
-	void activate_jobs();
-	void idle_jobs();
+	time_t getkbdtime(void);
+	void activate_jobs(void);
+	void idle_jobs(void);
 	char *configscriptaction = NULL;
 	char *inputfile = NULL;
 	char *scriptname = NULL;

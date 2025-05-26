@@ -111,12 +111,12 @@
 /* External functions called */
 
 extern int pbsd_init(int);
-extern void shutdown_ack();
+extern void shutdown_ack(void);
 extern int takeover_from_secondary(void);
 extern int be_secondary(time_t sec);
 extern void set_srv_prov_attributes();
 extern int connect_to_db(int);
-extern void stop_db();
+extern void stop_db(void);
 #ifdef NAS /* localmod 005 */
 extern int chk_and_update_db_svrhost();
 #endif /* localmod 005 */
@@ -129,8 +129,8 @@ extern int pbs_failover_active;
 /* Local Private Functions */
 
 static int get_port(char *, unsigned int *, pbs_net_t *);
-static time_t next_task();
-static int start_hot_jobs();
+static time_t next_task(void);
+static int start_hot_jobs(void);
 static void lock_out(int, int);
 #define HOT_START_PING_RATE 15
 
@@ -184,7 +184,7 @@ sigset_t allsigs;
 /* private data */
 static char *suffix_slash = "/";
 static int brought_up_alt_sched = 0;
-void stop_db();
+void stop_db(void);
 extern void mark_nodes_unknown(int);
 
 /*
@@ -248,7 +248,7 @@ static int background = 0;
  * @retval       -1	- Fork or setsid failed.
  */
 pid_t
-go_to_background()
+go_to_background(void)
 {
 	pid_t sid = -1;
 	int rc;
@@ -444,7 +444,7 @@ pbs_close_stdfiles(void)
  *		Clear on any job not running and without a restart file.
  */
 static void
-clear_exec_vnode()
+clear_exec_vnode(void)
 {
 	job *pjob;
 
@@ -1583,7 +1583,7 @@ get_port(char *arg, unsigned int *port, pbs_net_t *addr)
  */
 
 static time_t
-next_task()
+next_task(void)
 {
 
 	time_t tilwhen;
@@ -1615,7 +1615,7 @@ next_task()
  */
 
 static int
-start_hot_jobs()
+start_hot_jobs(void)
 {
 	int ct = 0;
 	char *nodename;
