@@ -50,8 +50,8 @@
 char *discui_(char *cp, unsigned value, unsigned *ndigs);
 char *discul_(char *cp, unsigned long value, unsigned *ndigs);
 char *discull_(char *cp, u_Long value, unsigned *ndigs);
-void disi10d_();
-void disi10l_();
+void disi10d_(void);
+void disi10l_(void);
 void disiui_(void);
 void dis_init_tables(void); /* called once per process to init dis tables */
 void init_ulmax(void);

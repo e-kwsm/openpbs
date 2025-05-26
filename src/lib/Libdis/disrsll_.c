@@ -58,7 +58,7 @@ unsigned ulmaxdigs = 0;
  *
  */
 void
-init_ulmax()
+init_ulmax(void)
 {
 	char *cp;
 	if (ulmaxdigs == 0) {
