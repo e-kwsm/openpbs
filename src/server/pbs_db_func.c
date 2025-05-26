@@ -135,7 +135,7 @@ void stop_db(void);
  *
  */
 static int
-start_db()
+start_db(void)
 {
 	char *failstr = NULL;
 	int rc;
@@ -169,7 +169,7 @@ start_db()
  *		Try to stop till not successful, with incremental delay.
  */
 void
-stop_db()
+stop_db(void)
 {
 	char *db_err = NULL;
 	int db_delay = 0;
@@ -210,7 +210,7 @@ stop_db()
  *
  */
 void
-panic_stop_db()
+panic_stop_db(void)
 {
 	char panic_stop_txt[] = "Panic shutdown of Server on database error.  Please check PBS_HOME file system for no space condition.";
 
@@ -280,7 +280,7 @@ setup_db_connection(char *host, int port, int timeout)
  *
  */
 static void *
-get_db_connect_information()
+get_db_connect_information(void)
 {
 	void *lconn = NULL;
 	int rc = 0;
