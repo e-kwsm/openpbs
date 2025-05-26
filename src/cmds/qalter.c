@@ -68,7 +68,7 @@
  *
  */
 static void
-print_usage()
+print_usage(void)
 {
 	static char usag2[] = "       qalter --version\n";
 	static char usage[] =

@@ -114,7 +114,7 @@ extern int pbsd_init(int);
 extern void shutdown_ack(void);
 extern int takeover_from_secondary(void);
 extern int be_secondary(time_t sec);
-extern void set_srv_prov_attributes();
+extern void set_srv_prov_attributes(void);
 extern int connect_to_db(int);
 extern void stop_db(void);
 #ifdef NAS /* localmod 005 */

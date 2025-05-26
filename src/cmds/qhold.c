@@ -66,7 +66,7 @@
  *
  */
 static void
-print_usage()
+print_usage(void)
 {
 	static char usag2[] = "       qhold --version\n";
 	static char usage[] =

@@ -92,6 +92,6 @@ set_attr_resc_error_exit(struct attrl **attrib, char *attrib_name, char *attrib_
  * which doesn't use TPP
  */
 void
-DIS_tpp_funcs()
+DIS_tpp_funcs(void)
 {
 }
