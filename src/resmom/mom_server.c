@@ -632,7 +632,7 @@ is_request(int stream, int version)
 	u_long ipaddr;
 	char *jobid = NULL;
 	struct sockaddr_in *addr;
-	void init_addrs();
+	void init_addrs(void);
 	job *pjob;
 	FILE *filen = 0;
 	extern vnl_t *vnlp;	      /* vnode list */
