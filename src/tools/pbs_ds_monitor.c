@@ -136,7 +136,7 @@ check_and_stop_db(int dbpid)
  * @par MT-safe:	Yes
  */
 static pid_t
-get_pid()
+get_pid(void)
 {
 	char pidfile[MAXPATHLEN + 1];
 	FILE *fp;

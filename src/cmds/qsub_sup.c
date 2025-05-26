@@ -585,7 +585,7 @@ port_X11(void)
  *
  */
 void
-do_daemon_stuff()
+do_daemon_stuff(void)
 {
 	int pid;
 

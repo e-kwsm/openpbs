@@ -116,7 +116,7 @@ char *log_path(char *path, int index, int old, int month, int day, int year);
 #else
 char *log_path(char *path, int index, int month, int day, int year);
 #endif /* localmod 022 */
-void alloc_more_space();
+void alloc_more_space(void);
 void filter_excess(int threshold);
 int sort_by_message(const void *v1, const void *v2);
 

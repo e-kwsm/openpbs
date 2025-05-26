@@ -95,7 +95,7 @@ static char none[1] = {'\0'};
  * @retval	columns, in characters	: success
  */
 int
-get_cols()
+get_cols(void)
 {
 
 #ifdef WIN32
@@ -832,7 +832,7 @@ log_path(char *path, int index, int month, int day, int year)
  *
  */
 void
-alloc_more_space()
+alloc_more_space(void)
 {
 	int old_amm = ll_max_amm;
 	struct log_entry *temp_log_lines;
