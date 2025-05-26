@@ -234,7 +234,7 @@ svr_shutdown(int type)
  */
 
 void
-shutdown_ack()
+shutdown_ack(void)
 {
 	if (pshutdown_request) {
 		reply_ack(pshutdown_request);

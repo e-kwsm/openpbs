@@ -160,7 +160,7 @@ extern void on_job_exit(struct work_task *);
 extern void on_job_rerun(struct work_task *);
 extern int resize_prov_table(int newsize);
 extern void offline_all_provisioning_vnodes(void);
-extern void stop_db();
+extern void stop_db(void);
 extern job *job_recov_db_spl(pbs_db_job_info_t *dbjob, job *pjob);
 extern pbs_sched *sched_alloc(char *sched_name);
 extern job *recov_job_cb(pbs_db_obj_info_t *, int *);
@@ -196,7 +196,7 @@ char *pbs_licensing_location = NULL;
  * @return	void
  */
 void
-init_server_attrs()
+init_server_attrs(void)
 {
 	resource_def *prdef = NULL;
 	resource *presc = NULL;

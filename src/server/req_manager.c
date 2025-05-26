@@ -3627,7 +3627,7 @@ timed_send_rescdef(struct work_task *)
  * 		the update is sent after one second from the last request.
  */
 static void
-deferred_send_rescdef()
+deferred_send_rescdef(void)
 {
 	if (rescdef_wt_g) {
 		delete_task(rescdef_wt_g);
