@@ -250,7 +250,7 @@ extern void pbs_python_ext_quick_start_interpreter(void);
 extern void pbs_python_ext_quick_shutdown_interpreter(void);
 extern int set_py_progname(void);
 extern int get_py_progname(char **);
-extern void pbs_python_clear_attributes();
+extern void pbs_python_clear_attributes(void);
 
 /* -- END pbs_python_external.c implementations -- */
 

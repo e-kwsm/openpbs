@@ -44,7 +44,7 @@
 #include <dis.h>
 #include "dis_.h"
 
-void disi10l_();
+void disi10l_(void);
 /**
  * @file	disp10l_.c
  */
