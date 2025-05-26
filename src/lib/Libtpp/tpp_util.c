@@ -151,7 +151,7 @@ tppdis_get_user_data(int fd)
  *
  */
 void
-DIS_tpp_funcs()
+DIS_tpp_funcs(void)
 {
 	pfn_transport_get_chan = tppdis_get_user_data;
 	pfn_transport_set_chan = (int (*)(int, pbs_tcp_chan_t *)) & tpp_set_user_data;
@@ -1593,7 +1593,7 @@ tpp_init_tls_key_once(void)
  *
  */
 int
-tpp_init_tls_key()
+tpp_init_tls_key(void)
 {
 	if (pthread_once(&tpp_once_ctrl, tpp_init_tls_key_once) != 0)
 		return -1;
@@ -1615,7 +1615,7 @@ tpp_init_tls_key()
  *
  */
 tpp_tls_t *
-tpp_get_tls()
+tpp_get_tls(void)
 {
 	tpp_tls_t *ptr;
 	if ((ptr = pthread_getspecific(tpp_key_tls)) == NULL) {
@@ -2354,7 +2354,7 @@ tpp_set_logmask(long logmask)
  *
  */
 void
-tpp_nslookup_atfork_prepare()
+tpp_nslookup_atfork_prepare(void)
 {
 	tpp_lock(&tpp_nslookup_mutex);
 }
@@ -2365,7 +2365,7 @@ tpp_nslookup_atfork_prepare()
  *
  */
 void
-tpp_nslookup_atfork_parent()
+tpp_nslookup_atfork_parent(void)
 {
 	tpp_unlock(&tpp_nslookup_mutex);
 }
@@ -2376,7 +2376,7 @@ tpp_nslookup_atfork_parent()
  *
  */
 void
-tpp_nslookup_atfork_child()
+tpp_nslookup_atfork_child(void)
 {
 	tpp_unlock(&tpp_nslookup_mutex);
 }
