@@ -68,7 +68,7 @@
 #include <stdlib.h>
 
 /* Initialize a dictionary structure */
-static dictionary *new_dictionary();
+static dictionary *new_dictionary(void);
 
 /* Initialize a new word with the given string value */
 static struct word *new_word(char *);
@@ -109,7 +109,7 @@ static void free_word(struct word *);
  *
  */
 static dictionary *
-new_dictionary()
+new_dictionary(void)
 {
 	dictionary *dict;
 	if ((dict = (dictionary *) malloc(sizeof(dictionary))) == NULL) {

@@ -1389,7 +1389,7 @@ handle_cmd(thrd_data_t *td, int tfd, int cmd, void *data)
  *
  */
 int
-tpp_get_thrd_index()
+tpp_get_thrd_index(void)
 {
 	tpp_tls_t *tls;
 	thrd_data_t *td;
@@ -2062,7 +2062,7 @@ free_phy_conn(phy_conn_t *conn)
  * @retval	0	success
  */
 int
-tpp_transport_shutdown()
+tpp_transport_shutdown(void)
 {
 	int i;
 	void *ret;
@@ -2109,7 +2109,7 @@ tpp_transport_shutdown()
  *
  */
 int
-tpp_transport_terminate()
+tpp_transport_terminate(void)
 {
 	int i;
 

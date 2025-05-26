@@ -44,7 +44,7 @@ lic_init(char *license_location)
 }
 
 int
-lic_obtainable()
+lic_obtainable(void)
 {
 	return 1000000;
 }
@@ -57,7 +57,7 @@ lic_get(int count)
 
 char
 	*
-	lic_get_error()
+	lic_get_error(void)
 {
 	return "No Error";
 }
@@ -69,13 +69,13 @@ checkkey(char **cred_list, char *nd_name, void *expiry)
 }
 
 void
-lic_close()
+lic_close(void)
 {
 	return;
 }
 
 char *
-lic_check_expiry()
+lic_check_expiry(void)
 {
 	return (char *) 0;
 }

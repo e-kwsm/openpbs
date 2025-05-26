@@ -420,7 +420,7 @@ get_licenses(int lic_count)
  */
 
 static long
-calc_licenses_allowed()
+calc_licenses_allowed(void)
 {
 	long count = licensing_control.licenses_total_needed;
 
@@ -564,7 +564,7 @@ release_lic_for_cray(struct pbsnode *pnode)
  * @return void
  */
 void
-license_nodes()
+license_nodes(void)
 {
 	int i;
 	pbsnode *np, *pnext;

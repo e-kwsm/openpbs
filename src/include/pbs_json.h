@@ -48,8 +48,8 @@ extern "C" {
 
 typedef void json_data;
 
-json_data *pbs_json_create_object();
-json_data *pbs_json_create_array();
+json_data *pbs_json_create_object(void);
+json_data *pbs_json_create_array(void);
 
 void pbs_json_insert_item(json_data *parent, char *key, json_data *value);
 int pbs_json_insert_string(json_data *parent, char *key, char *value);

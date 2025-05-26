@@ -71,7 +71,7 @@ cjson_insert_item(cJSON *parent, char *key, cJSON *value)
  *
  */
 json_data *
-pbs_json_create_object()
+pbs_json_create_object(void)
 {
     return (json_data *) cJSON_CreateObject();
 }
@@ -86,7 +86,7 @@ pbs_json_create_object()
  *
  */
 json_data *
-pbs_json_create_array()
+pbs_json_create_array(void)
 {
     return (json_data *) cJSON_CreateArray();
 }
