@@ -5003,7 +5003,7 @@ create_hook_vnode_list_param(PyObject *py_event_param,
  *
  */
 void
-pbs_python_clear_attributes()
+pbs_python_clear_attributes(void)
 {
 	pbs_iter_item *iter_entry = NULL;
 	pbs_iter_item *nxp_iter_entry;

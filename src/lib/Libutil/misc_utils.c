@@ -1748,7 +1748,7 @@ get_walltime(void)
  * @return double - number of seconds.
  **/
 static double
-get_cputime()
+get_cputime(void)
 {
 	clock_t clock_cycles;
 	clock_cycles = clock();

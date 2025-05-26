@@ -38,10 +38,10 @@
  */
 
 int lic_init(char *license_location);
-int lic_obtainable();
+int lic_obtainable(void);
 int lic_get(int count);
-char *lic_get_error();
+char *lic_get_error(void);
 int checkkey(char **cred_list, char *nd_name, time_t *expiry);
-void lic_close();
-char *lic_check_expiry();
+void lic_close(void);
+char *lic_check_expiry(void);
 int lic_needed_for_node(void *node_lic_ctx);

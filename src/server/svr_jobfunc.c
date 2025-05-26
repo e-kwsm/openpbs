@@ -4903,7 +4903,7 @@ svr_histjob_update(job *pjob, char newstate, int newsubstate)
  * 					 svr_history_duration is/are zero.
  */
 int
-svr_chk_history_conf()
+svr_chk_history_conf(void)
 {
 	return (svr_history_enable && svr_history_duration);
 }

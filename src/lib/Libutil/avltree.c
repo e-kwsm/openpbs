@@ -326,7 +326,7 @@ copydata(rectype *r1, rectype *r2)
  * @retval	NULL			error
  */
 static node *
-allocnode()
+allocnode(void)
 {
 	int size = (ix_keylength ? ix_keylength : rec_keylength);
 	node *n = (node *) malloc(size + node_overhead);
