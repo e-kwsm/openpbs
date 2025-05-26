@@ -124,7 +124,7 @@ extern void tpp_set_app_net_handler(void (*app_net_down_handler)(void *), void (
 extern void tpp_set_logmask(long);
 extern int set_tpp_config(struct pbs_config *, struct tpp_config *, char *, int, char *);
 extern void free_tpp_config(struct tpp_config *);
-extern void DIS_tpp_funcs();
+extern void DIS_tpp_funcs(void);
 extern int tpp_open(char *, unsigned int);
 extern int tpp_close(int);
 extern int tpp_eom(int);

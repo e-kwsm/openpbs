@@ -133,8 +133,8 @@ static unsigned int syslogsvr = 3;
 static unsigned int pbs_log_highres_timestamp = 0;
 
 static void log_init(void);
-static int log_mutex_lock();
-static int log_mutex_unlock();
+static int log_mutex_lock(void);
+static int log_mutex_unlock(void);
 static void get_timestamp(ms_time *mst);
 static void log_record_inner(int eventtype, int objclass, int sev, const char *objname, const char *text, ms_time *mst);
 static void log_console_error(char *);
@@ -287,7 +287,7 @@ mk_log_name(char *pbuf, size_t pbufsz)
  *
  */
 static int
-log_mutex_lock()
+log_mutex_lock(void)
 {
 	if (pthread_mutex_lock(&log_write_mutex) != 0) {
 		log_console_error("PBS cannot lock its log");
@@ -311,7 +311,7 @@ log_mutex_lock()
  *
  */
 static int
-log_mutex_unlock()
+log_mutex_unlock(void)
 {
 	if (pthread_mutex_unlock(&log_write_mutex) != 0) {
 		log_console_error("PBS cannot unlock its log");
@@ -328,7 +328,7 @@ log_mutex_unlock()
  *
  */
 static void
-log_pre_fork_handler()
+log_pre_fork_handler(void)
 {
 	log_mutex_lock();
 }
@@ -339,7 +339,7 @@ log_pre_fork_handler()
  *
  */
 static void
-log_parent_post_fork_handler()
+log_parent_post_fork_handler(void)
 {
 	log_mutex_unlock();
 }
@@ -350,7 +350,7 @@ log_parent_post_fork_handler()
  *
  */
 static void
-log_child_post_fork_handler()
+log_child_post_fork_handler(void)
 {
 	log_mutex_unlock();
 }
@@ -409,7 +409,7 @@ log_init(void)
  *
  */
 static void
-log_add_debug_info()
+log_add_debug_info(void)
 {
 	char dest[LOG_BUF_SIZE] = {'\0'};
 	char temp[PBS_MAXHOSTNAME + 1] = {'\0'};
@@ -466,7 +466,7 @@ log_supported_auth_methods(char **supported_auth_methods)
  */
 
 static void
-log_add_if_info()
+log_add_if_info(void)
 {
 	char tbuf[LOG_BUF_SIZE];
 	char msg[LOG_BUF_SIZE];

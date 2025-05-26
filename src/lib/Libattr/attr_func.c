@@ -1618,7 +1618,7 @@ dup_attrl_list(struct attrl *oattr_list)
  *	@brief create a new attrl structure and initialize it
  */
 struct attrl *
-new_attrl()
+new_attrl(void)
 {
 	struct attrl *at;
 

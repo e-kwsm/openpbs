@@ -286,8 +286,8 @@ extern void time4resvFinish(struct work_task *);
 extern void Time4resvFinish(struct work_task *);
 extern void Time4_I_term(struct work_task *);
 extern void tickle_for_reply(void);
-extern void remove_deleted_resvs();
-extern void add_resv_beginEnd_tasks();
+extern void remove_deleted_resvs(void);
+extern void add_resv_beginEnd_tasks(void);
 extern void resv_retry_handler(struct work_task *);
 extern void set_idle_delete_task(resc_resv *presv);
 #endif /* _WORK_TASK_H */

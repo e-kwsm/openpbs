@@ -62,7 +62,7 @@ unsigned dis_umaxd = 0;
  */
 
 void
-disiui_()
+disiui_(void)
 {
 	char *cp;
 

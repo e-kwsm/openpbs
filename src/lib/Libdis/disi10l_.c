@@ -69,7 +69,7 @@ dis_long_double_t *dis_ln10 = NULL;
  */
 
 void
-disi10l_()
+disi10l_(void)
 {
 	int i;
 	unsigned long ul;

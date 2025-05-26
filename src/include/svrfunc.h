@@ -133,7 +133,7 @@ extern int set_select_and_place(int, void *, attribute *);
 extern int make_schedselect(attribute *, resource *, pbs_queue *, attribute *);
 extern long long get_next_svr_sequence_id(void);
 extern int compare_obj_hash(void *, int, void *);
-extern void panic_stop_db();
+extern void panic_stop_db(void);
 extern void free_db_attr_list(pbs_db_attr_list_t *);
 extern bool delete_pending_arrayjobs(struct batch_request *);
 
@@ -287,7 +287,7 @@ extern int removefiles_action(attribute *pattr, void *pobject, int actmode);
 
 /* Functions below exposed as they are now accessed by the Python hooks */
 extern void update_state_ct(attribute *, int *, attribute_def *attr_def);
-extern void update_license_ct();
+extern void update_license_ct(void);
 
 #ifdef _PBS_JOB_H
 extern int job_set_wait(attribute *, void *, int);

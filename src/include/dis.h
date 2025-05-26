@@ -200,7 +200,7 @@ u_Long disrull(int stream, int *retval);
 extern const char *dis_emsg[];
 
 /* the following routines set/control DIS over tcp */
-extern void DIS_tcp_funcs();
+extern void DIS_tcp_funcs(void);
 
 #define PBS_DIS_BUFSZ 8192
 

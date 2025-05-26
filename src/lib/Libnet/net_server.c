@@ -96,7 +96,7 @@ static int num_connections = 0;
 static int net_is_initialized = 0;
 static void *poll_context; /* This is the context of the descriptors being polled */
 void *priority_context;
-static int init_poll_context(); /* Initialize the tpp context */
+static int init_poll_context(void); /* Initialize the tpp context */
 static void (*read_func[2])(int);
 static int (*ready_read_func[2])(conn_t *);
 static char logbuf[256];
