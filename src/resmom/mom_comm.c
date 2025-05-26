@@ -2583,7 +2583,7 @@ resc_string(job *pjob)
 	pbs_list_head lhead;
 	int len, used, tot;
 	char *res_str, *ch;
-	char *getuname();
+	char *getuname(void);
 	extern int resc_access_perm;
 
 	ch = getuname();

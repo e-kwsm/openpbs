@@ -170,7 +170,7 @@ get_permission(char *perm)
  */
 
 handler_ret_t
-check_interactive_service()
+check_interactive_service(void)
 {
 	return HANDLER_SUCCESS;
 }

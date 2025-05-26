@@ -1398,7 +1398,7 @@ again:
  *	on receiving fatal error response will do exit with 1.
  */
 int
-response()
+response(void)
 {
 	char ch = '\0';
 	char *cp = NULL;
@@ -1449,7 +1449,7 @@ response()
  *
  */
 void
-usage()
+usage(void)
 {
 #ifdef KERBEROS
 #ifdef CRYPT

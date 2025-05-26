@@ -186,7 +186,7 @@ process_opts(int argc, char **argv, struct attrl **attrp, char *dest)
  */
 
 static void
-print_usage()
+print_usage(void)
 {
 	static char usag2[] = "       pbs_ralter --version\n";
 	static char usage[] =
