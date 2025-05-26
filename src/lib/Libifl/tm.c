@@ -237,7 +237,7 @@ del_event(event_info *ep)
  *		breaks out of loop if fails.
  */
 static tm_event_t
-new_event()
+new_event(void)
 {
 	static tm_event_t next_event = TM_NULL_EVENT + 1;
 	event_info *ep;
@@ -427,7 +427,7 @@ static tm_node_id *node_table = NULL;
 #define PBS_NET_RC_RETRY -2
 
 static int
-localmom()
+localmom(void)
 {
 	static int have_addr = 0;
 	static struct in_addr hostaddr;
@@ -1142,7 +1142,7 @@ tm_subscribe(tm_task_id tid, char *name, void *info, int len, int *info_len, tm_
  *
  */
 int
-tm_finalize()
+tm_finalize(void)
 {
 	event_info *e;
 	int i = 0;

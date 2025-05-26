@@ -631,7 +631,7 @@ tcp_connect(const char *hostname, int server_port, const char *extend_data)
  *
  */
 	int
-	pbs_query_max_connections()
+	pbs_query_max_connections(void)
 	{
 		return (NCONNECTS - 1);
 	}

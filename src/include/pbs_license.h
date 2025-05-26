@@ -97,7 +97,7 @@ extern pbs_list_head unlicensed_nodes_list;
 extern void unset_signature(void *, char *);
 extern int release_node_lic(void *);
 
-extern void license_nodes();
+extern void license_nodes(void);
 extern void init_licensing(struct work_task *ptask);
 extern void reset_license_counters(pbs_license_counts *);
 extern void remove_from_unlicensed_node_list(struct pbsnode *pnode);

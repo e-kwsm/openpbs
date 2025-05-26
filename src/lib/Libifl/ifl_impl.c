@@ -197,7 +197,7 @@ pbs_connect_extend(const char *server, const char *extend_data)
  *
  */
 char *
-pbs_default()
+pbs_default(void)
 {
 	return (*pfn_pbs_default)();
 }
