@@ -287,7 +287,7 @@ check_res_op(char *optarg, char *resource_name, enum batch_op *op, char *resourc
  *
  */
 static void
-print_usage()
+print_usage(void)
 {
 	static char usag2[] = "       qselect --version\n";
 	static char usage[] =

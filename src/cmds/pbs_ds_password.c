@@ -138,7 +138,7 @@ extern unsigned char pbs_aes_iv[][16];
  *
  */
 static void
-cleanup()
+cleanup(void)
 {
 	char *db_err = NULL;
 

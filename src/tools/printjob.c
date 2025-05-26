@@ -95,7 +95,7 @@ svrattrl *read_all_attrs_from_jbfile(int fd, char **state, char **substate, char
  *
  */
 void
-print_usage()
+print_usage(void)
 {
 	fprintf(stderr, "Usage: %s [-a] (jobid|file)\n", "printjob");
 	fprintf(stderr, "       %s -s jobid\n", "printjob");
