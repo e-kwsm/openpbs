@@ -285,7 +285,7 @@ static int max_run_opt = FALSE;
 extern char **environ;
 
 extern void blockint(int sig);
-extern void do_daemon_stuff();
+extern void do_daemon_stuff(void);
 extern void enable_gui(void);
 extern void set_sig_handlers(void);
 extern void interactive(void);

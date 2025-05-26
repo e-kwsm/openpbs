@@ -100,7 +100,7 @@ main(int argc, char *argv[], char *env[])
 	struct in_addr *ina;
 	int naddr;
 	int vflag = 0;
-	void prt_herrno();
+	void prt_herrno(void);
 	extern int optind;
 
 	/*the real deal or output pbs_version and exit?*/
@@ -207,7 +207,7 @@ main(int argc, char *argv[], char *env[])
  * 		prt_herrno - assigns error descriptions corresponding to error number.
  */
 void
-prt_herrno()
+prt_herrno(void)
 {
 	char *txt;
 
