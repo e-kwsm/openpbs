@@ -453,7 +453,7 @@ extern char *msg_daemonname;
 #define JOB_ACT_REQ_DEALLOCATE 2
 
 extern void remove_mom_from_pool(mominfo_t *);
-extern void mcast_moms();
+extern void mcast_moms(void);
 
 #ifndef PBS_MOM
 extern int node_save_db(struct pbsnode *pnode);

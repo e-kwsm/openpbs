@@ -69,7 +69,7 @@ double *dis_dn10 = NULL;
  */
 
 void
-disi10d_()
+disi10d_(void)
 {
 	int i;
 	unsigned long ul;
