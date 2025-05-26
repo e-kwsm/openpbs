@@ -288,7 +288,7 @@ pbs_close_stdfiles(void)
  * @retval       -1	- Fork or setsid failed.
  */
 static pid_t
-go_to_background()
+go_to_background(void)
 {
 	pid_t sid = -1;
 	int rc;

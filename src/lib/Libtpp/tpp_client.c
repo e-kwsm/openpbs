@@ -227,7 +227,7 @@ time_t leaf_next_event_expiry(time_t now); /* IO thread only */
 
 /* static functions */
 static int connect_router(tpp_router_t *r);
-static tpp_router_t *get_active_router();
+static tpp_router_t *get_active_router(void);
 static stream_t *get_strm_atomic(unsigned int sd);
 static stream_t *get_strm(unsigned int sd);
 static stream_t *alloc_stream(tpp_addr_t *src_addr, tpp_addr_t *dest_addr);
@@ -855,7 +855,7 @@ tpp_open(char *dest_host, unsigned int port)
  *
  */
 static tpp_router_t *
-get_active_router()
+get_active_router(void)
 {
 	int i;
 	static int index = 0;
@@ -1284,7 +1284,7 @@ tpp_getaddr(int fd)
  *
  */
 void
-tpp_shutdown()
+tpp_shutdown(void)
 {
 	unsigned int i;
 	unsigned int sd;
@@ -1332,7 +1332,7 @@ tpp_shutdown()
  *
  */
 void
-tpp_terminate()
+tpp_terminate(void)
 {
 	/* Warning: Do not attempt to destroy any lock
 	 * This is not required since our library is effectively

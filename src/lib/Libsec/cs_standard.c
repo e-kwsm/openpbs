@@ -315,7 +315,7 @@ CS_server_init(void)
  */
 
 int
-CS_verify()
+CS_verify(void)
 {
 	return (CS_SUCCESS);
 }

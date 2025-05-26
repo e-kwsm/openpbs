@@ -98,9 +98,9 @@ int tpp_sock_setsockopt(int, int, int, const int *, int);
 
 #endif
 
-int tpp_sock_layer_init();
-int tpp_get_nfiles();
-int set_pipe_disposition();
+int tpp_sock_layer_init(void);
+int tpp_get_nfiles(void);
+int set_pipe_disposition(void);
 int tpp_sock_attempt_connection(int, char *, int);
 void tpp_invalidate_thrd_handle(pthread_t *);
 int tpp_is_valid_thrd(pthread_t);
@@ -511,9 +511,9 @@ int tpp_mod_fd(int, int, int);
  * set handlers using pthread_atfork.
  */
 extern pthread_mutex_t tpp_nslookup_mutex;
-void tpp_nslookup_atfork_prepare();
-void tpp_nslookup_atfork_parent();
-void tpp_nslookup_atfork_child();
+void tpp_nslookup_atfork_prepare(void);
+void tpp_nslookup_atfork_parent(void);
+void tpp_nslookup_atfork_child(void);
 #endif
 
 int tpp_validate_hdr(int, char *);
@@ -525,7 +525,7 @@ tpp_addr_t *tpp_sock_resolve_host(char *, int *);
 
 const char *tpp_transport_get_conn_hostname(int);
 void tpp_transport_set_conn_extra(int, void *);
-extern int tpp_get_thrd_index();
+extern int tpp_get_thrd_index(void);
 char *tpp_netaddr(tpp_addr_t *);
 char *tpp_netaddr_sa(struct sockaddr *);
 int tpp_encrypt_pkt(conn_auth_t *authdata, tpp_packet_t *pkt);
