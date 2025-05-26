@@ -67,7 +67,7 @@ print_info() {
 		if [ ${verbose} -ge 1 ]
 		then
 			[ ${2} -le 0 ] && echo "${3^} test(s): ${2}" && return
-			[ ${verbose} -eq 1 -o ${3} == "skipped" ] && echo "${2} test(s) ${3}:" && \
+			[ ${verbose} -eq 1 ] || [ ${3} == "skipped" ] && echo "${2} test(s) ${3}:" && \
 				sed -n "/^${3}: \(.*\)$/p" ${ptl_test_log} | awk '{ $1 = "\t"; print $0 }' && return
 			if [ ${verbose} -gt 1 ]
 			then
