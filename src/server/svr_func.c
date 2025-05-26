@@ -126,7 +126,7 @@ int provision_timeout;
 pbs_list_head prov_allvnodes;
 
 static int is_runnable(job *, struct prov_vnode_info *);
-extern void set_srv_prov_attributes();
+extern void set_srv_prov_attributes(void);
 static void del_prov_vnode_entry(job *);
 extern int resize_prov_table(int);
 static void prov_startjob(struct work_task *ptask);
@@ -4143,7 +4143,7 @@ remove_prov_record(char *vnode)
  */
 
 void
-prov_track_save()
+prov_track_save(void)
 {
 	FILE *fd;
 	int i;
@@ -5138,7 +5138,7 @@ fail_vnode(struct prov_vnode_info *prov_vnode_info, int hold_or_que)
  */
 
 void
-offline_all_provisioning_vnodes()
+offline_all_provisioning_vnodes(void)
 {
 	int i;
 	int count = 0;
@@ -6418,7 +6418,7 @@ del_prov_vnode_entry(job *pjob)
  * @return	None.
  */
 void
-set_srv_pwr_prov_attribute()
+set_srv_pwr_prov_attribute(void)
 {
 	char hook_name[] = PBS_POWER;
 	hook *phook = NULL;

@@ -97,7 +97,7 @@ extern pbs_sched *sched_alloc(char *sched_name);
  *
  */
 int
-update_svrlive()
+update_svrlive(void)
 {
 	static int fdlive = -1;
 	if (fdlive == -1) {
