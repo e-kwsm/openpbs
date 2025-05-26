@@ -104,11 +104,11 @@ struct startjob_rtn {
 extern int mom_set_limits(job *pjob, int); /* Set job's limits */
 extern int mom_do_poll(job *pjob);	   /* Should limits be polled? */
 extern int mom_does_chkpnt;		   /* see if mom does chkpnt */
-extern int mom_open_poll();		   /* Initialize poll ability */
-extern int mom_get_sample();		   /* Sample kernel poll data */
+extern int mom_open_poll(void);		   /* Initialize poll ability */
+extern int mom_get_sample(void);	   /* Sample kernel poll data */
 extern int mom_over_limit(job *pjob);	   /* Is polled job over limit? */
 extern int mom_set_use(job *pjob);	   /* Set resource_used list */
-extern int mom_close_poll();		   /* Terminate poll ability */
+extern int mom_close_poll(void);	   /* Terminate poll ability */
 extern int mach_checkpoint(struct task *, char *path, int abt);
 extern long mach_restart(struct task *, char *path); /* Restart checkpointed job */
 extern int set_job(job *, struct startjob_rtn *);

@@ -2229,7 +2229,7 @@ tpp_init_router(struct tpp_config *cnf)
  *
  */
 void
-tpp_router_shutdown()
+tpp_router_shutdown(void)
 {
 	tpp_going_down = 1;
 
@@ -2254,7 +2254,7 @@ tpp_router_shutdown()
  *
  */
 void
-tpp_router_terminate()
+tpp_router_terminate(void)
 {
 	return;
 }
