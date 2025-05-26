@@ -619,7 +619,7 @@ cnvrt_proc_attrib(int connect, struct attrl **attrp, char *dest)
  *
  */
 static void
-print_usage()
+print_usage(void)
 {
 	static char usag2[] = "       pbs_rsub --version\n";
 	static char usage[] =

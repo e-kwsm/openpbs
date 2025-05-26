@@ -1005,7 +1005,7 @@ parse_sysfile_info(const char *file,
  */
 
 char *
-get_versioned_libname()
+get_versioned_libname(void)
 {
 	int idx;
 	int table_size;

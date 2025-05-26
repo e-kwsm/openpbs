@@ -681,7 +681,7 @@ params_export(char *attrs, struct attropl **attrlist, int doper)
  *
  */
 char *
-who()
+who(void)
 {
 #ifdef WIN32
 	return (getlogin()); /* Windows version does not return NULL */
@@ -3253,7 +3253,7 @@ find_server(char *name)
  *
  */
 struct server *
-new_server()
+new_server(void)
 {
 	struct server *new;
 
@@ -3315,7 +3315,7 @@ free_server(struct server *svr)
  *
  */
 struct objname *
-new_objname()
+new_objname(void)
 {
 	struct objname *new;
 	Mstruct(new, struct objname);
@@ -3464,7 +3464,7 @@ is_valid_object(struct objname *obj, int type)
  *
  */
 struct objname *
-default_server_name()
+default_server_name(void)
 {
 	struct objname *obj;
 
@@ -3521,7 +3521,7 @@ temp_objname(char *obj_name, char *svr_name, struct server *svr)
  *
  */
 void
-close_non_ref_servers()
+close_non_ref_servers(void)
 {
 	struct server *svr, *tmp_svr;
 
