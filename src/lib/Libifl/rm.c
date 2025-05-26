@@ -626,7 +626,7 @@ getreq(int stream)
  *
  */
 int
-flushreq()
+flushreq(void)
 {
 	struct out *op, *prev;
 	int did, i;
@@ -682,7 +682,7 @@ flushreq()
  * @retval	-ve val			error
  */
 int
-activereq()
+activereq(void)
 {
 	struct out *op;
 	int try, i, num;

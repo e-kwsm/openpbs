@@ -272,7 +272,7 @@ tcp_send(int fd, void *data, int len)
  *
  */
 void
-DIS_tcp_funcs()
+DIS_tcp_funcs(void)
 {
 	pfn_transport_get_chan = tcp_get_chan;
 	pfn_transport_set_chan = set_conn_chan;
