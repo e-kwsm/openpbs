@@ -1337,7 +1337,7 @@ job_obit(ruu *pruu, int stream)
 	job *pjob;
 	svrattrl *patlist;
 	struct work_task *ptask;
-	void (*eojproc)(struct work_task *);
+	void (*eojproc)();
 	char *mailmsg = NULL;
 	char *msg = NULL;
 
