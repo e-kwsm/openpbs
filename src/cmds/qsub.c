@@ -1945,6 +1945,7 @@ job_env_basic(void)
 	struct utsname uns;
 #endif
 	int len = 0;
+	char *getcwd(char *, size_t);
 
 	/* Calculate how big to make the variable string. */
 	len = 0;
