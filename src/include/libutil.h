@@ -219,7 +219,7 @@ char *pbs_fgets_extend(char **pbuf, int *pbuf_size, FILE *fp);
 /*
  * Internal asprintf() implementation for use on all platforms
  */
-extern int pbs_asprintf(char **dest, const char *fmt, ...);
+extern int pbs_asprintf(char **__restrict dest, const char *__restrict fmt, ...);
 extern char *pbs_asprintf_format(int len, const char *fmt, va_list args);
 
 /*

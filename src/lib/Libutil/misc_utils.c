@@ -323,7 +323,7 @@ pbs_strcat(char **strbuf, int *ssize, const char *str)
  *        verify any paramaters
  */
 char *
-pbs_strcpy(char *__restrict dest, const char *__restrict src)
+pbs_strcpy(char *restrict dest, const char *restrict src)
 {
 	while (*src)
 		*dest++ = *src++;
@@ -347,7 +347,7 @@ pbs_strcpy(char *__restrict dest, const char *__restrict src)
  * @note: Caller needs ensure non-NULL pointers
  */
 char *
-pbs_strncpy(char *__restrict dest, const char *__restrict src, size_t n)
+pbs_strncpy(char *restrict dest, const char *restrict src, size_t n)
 {
 	if (strlen(src) < n - 1)
 		strcpy(dest, src);
@@ -571,7 +571,7 @@ pbs_asprintf_format(int len, const char *fmt, va_list args)
  * @retval >=0 - Length of new string, not including terminator
  */
 int
-pbs_asprintf(char **dest, const char *fmt, ...)
+pbs_asprintf(char **restrict dest, const char *restrict fmt, ...)
 {
 	va_list args;
 	int len;
