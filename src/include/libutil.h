@@ -204,13 +204,13 @@ char *pbs_strcat(char **strbuf, int *ssize, const char *str);
  * slow
  *
  */
-char *pbs_strcpy(char *dest, const char *src);
+char *pbs_strcpy(char *__restrict dest, const char *__restrict src);
 
 /*
  * general purpose strncpy function that will make sure to
  * copy '\0' at the end of the buffer.
  */
-char *pbs_strncpy(char *dest, const char *src, size_t n);
+char *pbs_strncpy(char *__restrict dest, const char *__restrict src, size_t n);
 
 int pbs_extendable_line(char *buf);
 char *pbs_fgets(char **pbuf, int *pbuf_size, FILE *fp);
