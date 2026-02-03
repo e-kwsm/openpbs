@@ -50,7 +50,7 @@ strict_pbs=0
 
 if [ "${PBS_NODEFILE:-XX}" != "XX" ]; then
 #	save any value of P4_RSHCOMMAND
-	if [ -n "$P4_RSHCOMMAND" -a -z "$PBS_RSHCOMMAND" ]; then
+	if [ -n "$P4_RSHCOMMAND" ] && [ -z "$PBS_RSHCOMMAND" ]; then
 		export PBS_RSHCOMMAND=$P4_RSHCOMMAND
 	fi
 
