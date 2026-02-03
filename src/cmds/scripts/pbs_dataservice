@@ -258,7 +258,7 @@ case "$1" in
 			i=0
 			check_status
 			sret=$?
-			while [ $i -lt 10 -a ${sret} -ne 1 ]
+			while [ $i -lt 10 ] && [ ${sret} -ne 1 ]
 			do
 				sleep 1
 				check_status

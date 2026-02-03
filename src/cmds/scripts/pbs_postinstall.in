@@ -46,7 +46,7 @@
 # by pbs_habitat.
 #
 
-if [ $# -eq 1 -a "$1" = "--version" ]; then
+if [ $# -eq 1 ] && [ "$1" = "--version" ]; then
 	echo pbs_version = @PBS_VERSION@
 	exit 0
 fi
@@ -63,7 +63,7 @@ poe_interactive() {
 		. /etc/poe.limits
 		if [ -z "$MP_POE_LAUNCH" ]; then
 			echo "*** WARNING: MP_POE_LAUNCH unset may not allow jobs to run correctly"
-		elif [ "$MP_POE_LAUNCH" = "none" -o \
+		elif [ "$MP_POE_LAUNCH" = "none" ] || [ \
 				"$MP_POE_LAUNCH" = "ip" ]; then
 			echo "*** WARNING: MP_POE_LAUNCH=$MP_POE_LAUNCH may not allow jobs to run correctly"
 		fi
@@ -72,13 +72,13 @@ poe_interactive() {
 }
 
 createdir() {
-	if [ -n "$1" -a ! -d "$1" ]; then
+	if [ -n "$1" ] && ! [ -d "$1" ]; then
 		if ! mkdir -p "$1"; then
 			echo "*** Could not create $1"
 			exit 1
 		fi
 	fi
-	if [ -n "$1" -a -n "$2" ]; then
+	if [ -n "$1" ] && [ -n "$2" ]; then
 		chmod "$2" "$1"
 	fi
 }
@@ -156,7 +156,7 @@ create_conf() {
 			exit 1
 		fi
 		# if both conf files are present merge the files but precedence should be given to newconf
-		if [ -f "$newconf" -a -f "$conf" ]; then
+		if [ -f "$newconf" ] && [ -f "$conf" ]; then
 			while IFS='=' read -r key value; do
 				if [ -z `grep -q "$key" "$newconf" && echo $?` ]; then
 					echo "$key=$value" >> "$newconf"
@@ -167,7 +167,7 @@ create_conf() {
 		# did, leave it alone. If not, and an existing configuration
 		# file is present, adapt it by substituting the new value
 		# of PBS_EXEC.
-		if [ ! -f "$newconf" -a -f "$conf" ]; then
+		if [ ! -f "$newconf" ] && [ -f "$conf" ]; then
 			# If an existing configuration file is present, adapt it by
 			# substituting the new value of PBS_EXEC.
 			eval "sed 's;\(^[[:space:]]*PBS_EXEC=\)[^[:space:]]*;\1$newpbs_exec;' \"$conf\"" >"$newconf"
@@ -228,7 +228,7 @@ create_conf() {
 	fi
 
 	[ -z "$PBS_EXEC" ] && echo "PBS_EXEC=$newpbs_exec" >>"$newconf"
-	[ -z "$PBS_HOME" -a -n "$newpbs_home" ] && echo "PBS_HOME=$newpbs_home" >>"$newconf"
+	[ -z "$PBS_HOME" ] && [ -n "$newpbs_home" ] && echo "PBS_HOME=$newpbs_home" >>"$newconf"
 	[ -z "${PBS_CORE_LIMIT}" ] && echo "PBS_CORE_LIMIT=@PBS_CORE_LIMIT@" >>"$newconf"
 	if ! grep "^PBS_SCP=" $newconf>/dev/null 2>&1; then
 		PBS_SCP=`type -P scp`
@@ -243,19 +243,19 @@ create_conf() {
 
 perform_checks() {
 	fail=0
-	if [ ${PBS_START_SERVER} != 0 -a ! -x ${PBS_EXEC}/sbin/pbs_server ] ;then
+	if [ ${PBS_START_SERVER} != 0 ] && ! [ -x ${PBS_EXEC}/sbin/pbs_server ] ;then
 		echo "*** Server does not exist!"
 		fail=1
 	fi
-	if [ ${PBS_START_SCHED} != 0 -a ! -x ${PBS_EXEC}/sbin/pbs_sched ] ;then
+	if [ ${PBS_START_SCHED} != 0 ] && ! [ -x ${PBS_EXEC}/sbin/pbs_sched ] ;then
 		echo "*** Scheduler does not exist!"
 		fail=1
 	fi
-	if [ ${PBS_START_COMM} != 0 -a ! -x ${PBS_EXEC}/sbin/pbs_comm ] ;then
+	if [ ${PBS_START_COMM} != 0 ] && ! [ -x ${PBS_EXEC}/sbin/pbs_comm ] ;then
 		echo "*** Communication agent does not exist!"
 		fail=1
 	fi
-	if [ ${PBS_START_MOM} != 0 -a ! -x ${PBS_EXEC}/sbin/pbs_mom ] ;then
+	if [ ${PBS_START_MOM} != 0 ] && ! [ -x ${PBS_EXEC}/sbin/pbs_mom ] ;then
 		echo "*** MOM does not exist!"
 		fail=1
 	fi
@@ -270,7 +270,7 @@ perform_checks() {
 	fi
 
 	# Issue a warning if PBS_EXEC has changed.
-	if [ -n "$oldpbs_exec" -a "$PBS_EXEC" != "$oldpbs_exec" ]; then
+	if [ -n "$oldpbs_exec" ] && [ "$PBS_EXEC" != "$oldpbs_exec" ]; then
 		echo "***"
 		echo "*** ======="
 		echo "*** NOTICE:"
@@ -285,7 +285,7 @@ perform_checks() {
 	fi
 
 	# Issue warning if PBS_HOME has changed.
-	if [ -n "$oldpbs_home" -a "$PBS_HOME" != "$oldpbs_home" ]; then
+	if [ -n "$oldpbs_home" ] && [ "$PBS_HOME" != "$oldpbs_home" ]; then
 		echo "***"
 		echo "*** ======="
 		echo "*** NOTICE:"
@@ -302,7 +302,7 @@ perform_checks() {
 	fi
 
 	# Issue a warning if PBS_SERVER is invalid
-	if [ -z "$PBS_SERVER" -o "$PBS_SERVER" = 'CHANGE_THIS_TO_PBS_SERVER_HOSTNAME' ]; then
+	if [ -z "$PBS_SERVER" ] || [ "$PBS_SERVER" = 'CHANGE_THIS_TO_PBS_SERVER_HOSTNAME' ]; then
 		echo "*** ======="
 		echo "*** NOTICE:"
 		echo "*** ======="
@@ -325,7 +325,7 @@ install_pbsinitd() {
 		cp ${PBS_EXEC}/libexec/pbs_init.d $initscript
 		rm -f /etc/rc.d/rc?.d/*pbs
 		# For now, for Cray XT only, install "modulefile" in hard location
-		if [ -d /opt/modulefiles -a -f ${PBS_EXEC}/etc/modulefile ]; then
+		if [ -d /opt/modulefiles ] && [ -f ${PBS_EXEC}/etc/modulefile ]; then
 			if [ ! -d /opt/modulefiles/pbs ] ; then
 				createdir /opt/modulefiles/pbs 0755
 			fi
@@ -369,7 +369,7 @@ install_pbsinitd() {
 				eval "sed -i 's;\(^[[:space:]]*ExecStop=\)[^[:space:]]*;\1${PBS_EXEC}/libexec/pbs_init.d;' \"$pbs_unitfile\""
 				if command -v systemctl >/dev/null 2>&1; then
 					systemctl enable pbs && systemctl daemon-reload
-					if [ $? != 0 -a -d "${presetdir}" ]; then
+					if [ $? != 0 ] && [ -d "${presetdir}" ]; then
 						echo "*** Creating preset file ${presetdir}/95-pbs.preset"
 						echo "enable pbs.service" > "${presetdir}/95-pbs.preset"
 					fi

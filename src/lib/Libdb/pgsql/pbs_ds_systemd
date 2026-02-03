@@ -51,7 +51,7 @@ if [ $is_systemd -eq 1 ] ; then
 
     pstmstr_pid_found=0
     try=0
-    while [ $try -lt 10 -a $pstmstr_pid_found -ne 1 ]
+    while [ $try -lt 10 ] && [ $pstmstr_pid_found -ne 1 ]
     do
         sleep 1
         if [ -f ${PBS_HOME}/datastore/postmaster.pid ] ; then

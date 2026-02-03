@@ -46,7 +46,7 @@ rm -rf /src/packages
 mkdir -p /src/packages
 mkdir -p ${rpm_dir}/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
-if [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x8" ]; then
+if [ "x${ID}" == "xcentos" ] && [ "x${VERSION_ID}" == "x8" ]; then
 	export LANG="C.utf8"
 	swig_opt="--with-swig=/usr/local"
 	if [ ! -f /tmp/swig/swig/configure ]; then
@@ -76,10 +76,10 @@ cp ../*-rpmlintrc ${rpm_dir}/SOURCES
 cp *.spec ${rpm_dir}/SPECS
 cflags="-g -O2 -Wall -Werror"
 cxxflags="-g -O2 -Wall -Werror"
-if [ "x${ID}" == "xdebian" -o "x${ID}" == "xubuntu" ]; then
+if [ "x${ID}" == "xdebian" ] || [ "x${ID}" == "xubuntu" ]; then
 	CFLAGS="${cflags} -Wno-unused-result" CXXFLAGS="${cxxflags} -Wno-unused-result" rpmbuild -ba --nodeps *.spec --with ptl
 else
-	if [ "x${ID}" == "xcentos" -a "x${VERSION_ID}" == "x8" ]; then
+	if [ "x${ID}" == "xcentos" ] && [ "x${VERSION_ID}" == "x8" ]; then
 		CFLAGS="${cflags}" CXXFLAGS="${cxxflags}" rpmbuild -ba *.spec --with ptl -D "_with_swig ${swig_opt}"
 	else
 		CFLAGS="${cflags}" CXXFLAGS="${cxxflags}" rpmbuild -ba *.spec --with ptl
@@ -94,7 +94,7 @@ mv ${rpm_dir}/SRPMS/*pbs* /src/packages/
 cd /src/packages
 rm -rf /tmp/pbs
 
-if [ "x${ID}" == "xdebian" -o "x${ID}" == "xubuntu" ]; then
+if [ "x${ID}" == "xdebian" ] || [ "x${ID}" == "xubuntu" ]; then
 	_target_arch=$(dpkg --print-architecture)
 	fakeroot alien --to-deb --scripts --target=${_target_arch} *-debuginfo*.rpm -g
 	_dir=$(/bin/ls -1d *debuginfo* | grep -vE '(rpm|orig)')
